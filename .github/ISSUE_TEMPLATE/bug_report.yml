@@ -13,8 +13,8 @@ body:
     attributes:
       label: 产品版本 / Product edition
       options:
-        - TrueODS Standard
-        - TrueODS Pro
+        - TrueODS 基础版 / TrueODS (base edition)
+        - TrueODS Distributed 分布式渲染版 / TrueODS Distributed
     validations:
       required: true
   - type: input
@@ -45,7 +45,7 @@ body:
       options:
         - 新任务（单机） / New render (one machine)
         - 续渲（单机） / Resumed render (one machine)
-        - 多机协同渲染（Pro） / Multi-Machine Rendering (Pro)
+        - 多机协同渲染（分布式渲染版） / Multi-Machine Rendering (TrueODS Distributed)
         - 其他 / Other
     validations:
       required: true

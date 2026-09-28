@@ -17,7 +17,7 @@
 
 如需加入 Telegram 售后群，请将 **Fab 订单号、所购产品名和购买凭证**发到同一邮箱，主题使用 **[TrueODS Telegram] 入群申请**。核实后，我们会回复邮件发送入群邀请链接。详细步骤与群内注意事项见[入群说明](COMMUNITY.md)。
 
-请先用与你的 UE 版本对应的插件包，并在一个新的输出文件夹里复现短范围问题。支持的引擎为 Unreal Engine 5.7 与 5.8，配合 Win64 编辑器与 MRQ；Linux、macOS、打包游戏，以及你自行搭建的命令行渲染（例如由渲染队列管理软件直接启动 MRQ），不是当前支持目标；插件自带的 **Render With Editor Closed** 与 Pro 的 **Start Rendering On This Machine** 属于支持范围。Path Tracing、第三方插件及特殊工作流请先用短测试确认，不能由编译成功推定画面兼容。
+请先用与你的 UE 版本对应的插件包，并在一个新的输出文件夹里复现短范围问题。支持的引擎为 Unreal Engine 5.7 与 5.8，配合 Win64 编辑器与 MRQ；Linux、macOS、打包游戏，以及你自行搭建的命令行渲染（例如由渲染队列管理软件直接启动 MRQ），不是当前支持目标；插件自带的 **Render With Editor Closed** 与 TrueODS Distributed（分布式渲染版）的 **Start Rendering On This Machine** 属于支持范围。Path Tracing、第三方插件及特殊工作流请先用短测试确认，不能由编译成功推定画面兼容。
 
 我们会根据可复现性、影响范围和资料完整性处理问题；本页没有承诺 24 小时值守、固定响应时限或为所有第三方插件提供兼容修复。
 
@@ -36,7 +36,7 @@
 ```text
 问题标题：
 TrueODS Version / VersionName：
-产品版本（Standard / Pro）：
+产品版本（TrueODS 基础版 / TrueODS Distributed 分布式渲染版）：
 UE 完整版本（例如 5.7.4），Launcher / 源码引擎：
 Windows 版本：
 GPU 型号 / 显存 / 驱动版本：
@@ -88,7 +88,7 @@ For technical support, email [trueodssupport@gmail.com](mailto:trueodssupport@gm
 
 To join the Telegram support group, email your **Fab order number, purchased product name and proof of purchase** to the same address with the subject **[TrueODS Telegram] Join request**. Once verified, we will reply with a group invitation link. See [How to join](COMMUNITY.md#english) for the steps and group guidelines.
 
-Use the package for your UE version and reproduce into a new folder over a short range. Supported engines are Unreal Engine 5.7 and 5.8, with the Win64 Editor and MRQ. Linux, macOS, packaged games and command-line renders you set up yourself (for example, MRQ launched directly by render-queue management software) are not current support targets; the plugin's own **Render With Editor Closed** and the Pro **Start Rendering On This Machine** are supported. Test Path Tracing, third-party integrations and unusual workflows before production; compilation alone does not establish rendering compatibility.
+Use the package for your UE version and reproduce into a new folder over a short range. Supported engines are Unreal Engine 5.7 and 5.8, with the Win64 Editor and MRQ. Linux, macOS, packaged games and command-line renders you set up yourself (for example, MRQ launched directly by render-queue management software) are not current support targets; the plugin's own **Render With Editor Closed** and the TrueODS Distributed **Start Rendering On This Machine** are supported. Test Path Tracing, third-party integrations and unusual workflows before production; compilation alone does not establish rendering compatibility.
 
 Reports are assessed by reproducibility, impact and the information available. This page does not promise round-the-clock coverage, a fixed response time or compatibility fixes for every third-party plugin.
 
@@ -107,7 +107,7 @@ Copy and fill in. Write "unknown" for anything you do not know yet; you do not n
 ```text
 Title:
 TrueODS Version / VersionName:
-Product edition (Standard / Pro):
+Product edition (TrueODS base edition / TrueODS Distributed):
 Exact UE version (e.g. 5.7.4); Launcher or source build:
 Windows version:
 GPU / VRAM / driver:

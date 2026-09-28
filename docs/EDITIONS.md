@@ -6,7 +6,7 @@
 
 ## 中文
 
-**Standard 适合独立制作与单机完成镜头；Pro 适合把同一镜头交给多台机器并行渲染的制作团队**。两版拥有相同的核心画面能力，Pro 增加**引擎级时序锁定**（跨段画面的时间接续）与**多机协同渲染**（多机任务组织）。
+**TrueODS 基础版适合独立制作与单机完成镜头；TrueODS Distributed（分布式渲染版）适合把同一镜头交给多台机器并行渲染的制作团队**。两版拥有相同的核心画面能力，分布式渲染版增加**引擎级时序锁定**（跨段画面的时间接续）与**多机协同渲染**（多机任务组织）。
 
 TRUEODS 正在准备 Fab 首发。本页介绍版本定位与工作流，正式功能及兼容范围以发布时商品页和交付包为准。
 
@@ -23,30 +23,30 @@ TRUEODS 正在准备 Fab 首发。本页介绍版本定位与工作流，正式�
 
 ### 两个版本怎么选？
 
-| 能力 / 使用方式 | Standard | Pro |
+| 能力 / 使用方式 | 基础版 | 分布式渲染版 |
 |---|---|---|
 | 上述四项画面能力 | 包含 | 包含 |
 | 单机渲染与中断后续渲 | 包含 | 包含 |
 | 由用户按镜头或帧范围安排任务 | 支持 | 支持 |
-| **引擎级时序锁定**：跨段、续渲与多机的时间接续 | 不包含 | 包含 |
+| **引擎级时序锁定**：分段与多机的时间接续 | 不包含 | 包含 |
 | **多机协同渲染**：自动校验配置、分配帧段、检查收帧完整性 | 不包含 | 包含 |
 | 典型用途 | 独立创作者、小型项目、单机完成镜头 | 制作团队、长镜头、多台自行管理的机器 |
 
-Standard 可以续渲，也可以由用户安排不同帧范围；这些操作本身不会提供 Pro 的跨机时序接续与任务协同。单机续渲使用该 MRQ 任务 **True ODS Panoramic** 设置最上方的 **Resume Render** 按钮（输出目录中有未完成的渲染时才出现），详见[快速上手](QUICKSTART.md)。
+基础版可以续渲，也可以由用户安排不同帧范围；这些操作本身不会提供分布式渲染版的跨机时序接续与任务协同。单机续渲使用该 MRQ 任务 **True ODS Panoramic** 设置 **Output** 区输出文件夹下方的 **Resume Render** 按钮（输出目录中有未完成的渲染时才出现），详见[快速上手](QUICKSTART.md)。
 
-### Pro：引擎级时序锁定
+### 分布式渲染版：引擎级时序锁定
 
 **帧号接得上，场景里的动态效果也要接得上。**
 
-例如，一个镜头的前半段和后半段分开渲染：可能交给两台机器，也可能中断后再续渲。除了接上帧号，还需要让时间驱动的效果接上同一时刻。Pro 从引擎层保持跨段与续渲时的时间接续，解决只划分帧范围仍可能出现的时间错位问题。
+例如，一个镜头的前半段和后半段分开渲染：可能交给两台机器，也可能在同一台机器上分两次、各从自己的起始帧开始渲染。除了接上帧号，还需要让时间驱动的效果接上同一时刻。分布式渲染版从引擎层保持跨段的时间接续，解决只划分帧范围仍可能出现的时间错位问题。
 
 这项功能负责**画面时间接续**，但不保证所有模拟完全一致。未烘焙的模拟、随机或外部驱动效果，以及需要多帧才能稳定的光照与效果，仍需对应缓存、可重复设置、预热与接点检查。
 
-序列含 Time Dilation 轨道时，只有在其第一个关键帧之前开始的分段和续渲才保证时间接续。多机任务请在 **TrueODS Multi-Machine** 面板 **Advanced** 区的 **Frames no part may start at** 填入该关键帧的帧号（默认留空）。
+序列含 Time Dilation 轨道时，只有在其第一个关键帧之前开始的分段才保证时间接续。多机任务请在 **TrueODS Multi-Machine** 面板 **Advanced** 区的 **Frames no part may start at** 填入该关键帧的帧号（默认留空）。
 
-时序锁定在 Pro 中默认开启，适用于分段、续渲与多机渲染，无需单独入口。它对应 MRQ 任务 **True ODS Panoramic** 设置中的 **Consistent Motion Timing**；该选项在打开 **Rendering On Several Machines** 后显示，默认开启，请保持开启。
+时序锁定在分布式渲染版中默认开启，用于分段与多机渲染，无需单独入口。它对应 MRQ 任务 **True ODS Panoramic** 设置中的 **Consistent Motion Timing**；该选项在打开 **Rendering On Several Machines** 后显示，默认开启，请保持开启。
 
-### Pro：多机协同渲染
+### 分布式渲染版：多机协同渲染
 
 **自动校验配置、分配帧段、检查收帧完整性。**
 
@@ -54,13 +54,13 @@ Standard 可以续渲，也可以由用户安排不同帧范围；这些操作�
 
 面板负责检查各机器的配置、分配帧段，并在收帧时检查输出完整性、列出缺失帧。把工程复制到每台机器、在各机器安装相同版本的引擎与同一插件构建、第三方资源授权、设置各机器的输出位置与存储、在每台机器上启动或续渲，以及收帧前把其他机器的输出复制到主机，都由用户完成；插件不对接渲染队列或农场管理软件。配置检查通过表示检查范围内的配置符合要求，最终画面仍要验收。
 
-### Pro 多机流程
+### 分布式渲染版多机流程
 
-先完成[快速上手](QUICKSTART.md)的单机检查，再打开 **TrueODS Pro > Multi-Machine Rendering**。在主机上创建任务，由你保存工程并复制到其他参与渲染的机器，最后在主机上收帧；在每台参与渲染的机器上，由你执行配置检查，再启动或续渲该机分到的帧段。
+先完成[快速上手](QUICKSTART.md)的单机检查，再打开 **TrueODS Distributed > Multi-Machine Rendering**。在主机上创建任务，由你保存工程并复制到其他参与渲染的机器，最后在主机上收帧；在每台参与渲染的机器上，由你执行配置检查，再启动或续渲该机分到的帧段。
 
-**入口在编辑器顶栏的 Help 右侧**。点击 **TrueODS Pro**，再选 **Multi-Machine Rendering**，打开的面板标签页为 **TrueODS Multi-Machine**。此入口仅在 Pro 版提供；Standard 的顶层菜单名为 **TrueODS Standard**，其中没有多机入口。
+**入口在编辑器顶栏的 Help 右侧**。点击 **TrueODS Distributed**，再选 **Multi-Machine Rendering**，打开的面板标签页为 **TrueODS Multi-Machine**。此入口仅在分布式渲染版提供；基础版的顶层菜单名为 **TrueODS**，其中没有多机入口。
 
-[![多机协同渲染入口：顶栏 Help 右侧的 TrueODS Pro，选择 Multi-Machine Rendering，打开 TrueODS Multi-Machine 面板](../media/guide/pro-menu-entry.png)](../media/guide/pro-menu-entry.png)
+[![多机协同渲染入口：顶栏 Help 右侧的 TrueODS Distributed，选择 Multi-Machine Rendering，打开 TrueODS Multi-Machine 面板](../media/guide/distributed-menu-entry.png)](../media/guide/distributed-menu-entry.png)
 
 以下为真实界面的局部截图，点击可查看原图。截图用于定位操作，图中帧范围与数值是示例；具体布局以安装版本为准。
 
@@ -68,7 +68,7 @@ Standard 可以续渲，也可以由用户安排不同帧范围；这些操作�
 
 准备关卡、序列和 MRQ 配置，并在该任务的 **True ODS Panoramic** 设置中打开 **Rendering On Several Machines**；随后显示的 **Consistent Motion Timing** 默认开启，请保持开启。在面板中点击 **Re-read Queue** 读取队列，填写 **Job name**（序列名会自动加在前面；留空则使用序列名加日期），选择 **Whole sequence / Frames** 和 **Machines**，按需填写 **Split (optional)**，确认 **Multi-machine stability**（有默认值），最后点击 **Create Job**。
 
-[![Pro 创建任务：读取队列、任务名、帧范围、机器数、多机稳定性选项和 Create Job 按钮](../media/guide/pro-create-job.png)](../media/guide/pro-create-job.png)
+[![分布式渲染版创建任务：读取队列、任务名、帧范围、机器数、多机稳定性选项和 Create Job 按钮](../media/guide/distributed-create-job.png)](../media/guide/distributed-create-job.png)
 
 **看这里**：先点击 **Re-read Queue**，面板读到队列中的任务后再创建。**Machines** 是参与渲染的机器数量；**Split (optional)** 留空时均分，也可为每台机器各填一个数字，用英文逗号分隔（例如 2,1 表示 1 号机分到的帧数是 2 号机的两倍）。面板会在 **Multi-machine stability** 下方写明每个选项对画面的影响和增加的耗时，创建前先看这段说明。之后要修改任务设置，点击 **Recreate Job** 重建同名任务，再按第 2 步把工程重新复制到每台机器，并在各机器重做第 3 步检查。**Open Job Folder** 打开该任务的文件夹。
 
@@ -80,7 +80,7 @@ Standard 可以续渲，也可以由用户安排不同帧范围；这些操作�
 
 在 **Rescan** 左侧的 **Job** 下拉框选择任务，点击 **Check This Machine**。列表里没有该任务时先点 **Rescan**。按检查报告修正不匹配项，通过后再进行渲染。
 
-[![Pro 配置检查：Rescan 和 Check This Machine 按钮](../media/guide/pro-check-machine.png)](../media/guide/pro-check-machine.png)
+[![分布式渲染版配置检查：Rescan 和 Check This Machine 按钮](../media/guide/distributed-check-machine.png)](../media/guide/distributed-check-machine.png)
 
 #### 4. 启动或继续 · 每台机器
 
@@ -88,7 +88,7 @@ Standard 可以续渲，也可以由用户安排不同帧范围；这些操作�
 
 渲染中断时，此步骤会出现 **Resume Render Job** 按钮：已完成的部分会跳过，中断的部分从停止处继续。续渲会保留已写出且记录完整的帧、补渲缺失帧，同时把第一个缺失帧之前的若干帧重新渲染，并与磁盘上的原帧逐帧平滑混合写回，使中断处不跳变。若缺失帧夹在已写出的帧中间，缺帧之后的若干帧也会同样重渲并混合，不计入续渲提示中的帧数。默认设置下，重渲帧数等于本步骤显示的 **Handle frames**（默认 32 帧）；此步骤的续渲提示会写出具体帧数。这些帧需要额外的渲染时间。混合前的原帧保存在输出帧旁的 `_resume_originals` 文件夹。
 
-进度显示在 **Watch Console** 窗口中：已完成帧数、预计结束时间和 GPU 使用情况。点击 **Start Rendering On This Machine** 后会自动打开；关闭后可在面板中点击 **Open Watch Console**，或通过菜单 **TrueODS Pro > Watch Console** 重新打开。编辑器面板本身不显示实时进度。
+进度显示在 **Watch Console** 窗口中：已完成帧数、预计结束时间和 GPU 使用情况。点击 **Start Rendering On This Machine** 后会自动打开；关闭后可在面板中点击 **Open Watch Console**，或通过菜单 **TrueODS Distributed > Watch Console** 重新打开。编辑器面板本身不显示实时进度。
 
 #### 5. 汇总与验收 · 主机
 
@@ -98,11 +98,11 @@ Standard 可以续渲，也可以由用户安排不同帧范围；这些操作�
 
 ### 产品版本与 Fab 价格档
 
-**TRUEODS Standard / Pro 是产品版本；Fab Personal / Professional 是 Fab 价格档**。二者分别选择。购买资格及权利范围以正式商品页与 [Fab 完整条款](https://www.fab.com/eula)为准。
+**TrueODS 基础版 / 分布式渲染版是产品版本；Fab Personal / Professional 是 Fab 价格档**。二者分别选择。购买资格及权利范围以正式商品页与 [Fab 完整条款](https://www.fab.com/eula)为准。
 
 ## English
 
-**Standard suits independent production and shots completed on one machine. Pro suits teams rendering parts of the same shot in parallel across several machines.** Both share the core image capabilities; Pro adds **Engine-Level Temporal Lock** (picture-time continuity across segments) and **Multi-Machine Rendering** (task organisation across machines).
+**The base TrueODS edition suits independent production and shots completed on one machine. TrueODS Distributed suits teams rendering parts of the same shot in parallel across several machines.** Both share the core image capabilities; TrueODS Distributed adds **Engine-Level Temporal Lock** (picture-time continuity across segments) and **Multi-Machine Rendering** (task organisation across machines).
 
 TRUEODS is preparing for its Fab launch. This page explains edition positioning and workflow. The released listings and packages will define final features and compatibility.
 
@@ -119,30 +119,30 @@ For 360 top/bottom stereo, 8K is **8192 × 4096 per eye and 8192 × 8192 combine
 
 ### Choose an edition
 
-| Capability / workflow | Standard | Pro |
+| Capability / workflow | Base edition | TrueODS Distributed |
 |---|---|---|
 | The four shared image capabilities | Included | Included |
 | Single-machine rendering and resume after interruption | Included | Included |
 | User-organised shots or frame ranges | Supported | Supported |
-| **Engine-Level Temporal Lock** across segments, resumes, and machines | Not included | Included |
+| **Engine-Level Temporal Lock** across segments and machines | Not included | Included |
 | **Multi-Machine Rendering**: automatic configuration checks, frame-range allocation, and output completeness checks | Not included | Included |
 | Typical use | Independent creators, smaller projects, single-machine shots | Production teams, long shots, several machines you manage yourself |
 
-Standard can resume and users can arrange frame ranges themselves. Those operations alone do not provide Pro's cross-machine time continuity and coordinated task workflow. For a single-machine resume, use the **Resume Render** button at the top of the job's **True ODS Panoramic** settings in MRQ (it appears only when the output folder holds an unfinished render); see [Quick Start](QUICKSTART.md#english).
+The base edition can resume and users can arrange frame ranges themselves. Those operations alone do not provide TrueODS Distributed's cross-machine time continuity and coordinated task workflow. For a single-machine resume, use the **Resume Render** button below the output folder in the **Output** section of **True ODS Panoramic** (it appears only when the output folder holds an unfinished render); see [Quick Start](QUICKSTART.md#english).
 
-### Pro: Engine-Level Temporal Lock
+### TrueODS Distributed: Engine-Level Temporal Lock
 
 **The frame numbers line up. The scene's motion should, too.**
 
-For example, the first and second halves of a shot are rendered separately: on two machines, or before and after an interruption. Frame numbers must join, and time-driven effects must also arrive at the matching moment. Pro maintains time continuity at the engine level across segments and resumes, addressing time offsets that simply assigning frame ranges may leave unresolved.
+For example, the first and second halves of a shot are rendered separately: on two machines, or on one machine in two runs that each start at their own first frame. Frame numbers must join, and time-driven effects must also arrive at the matching moment. TrueODS Distributed maintains time continuity at the engine level across segments, addressing time offsets that simply assigning frame ranges may leave unresolved.
 
 This capability handles **continuity in scene time**; it does not guarantee that every simulation matches exactly. Unbaked simulations, random or externally driven effects, and lighting or effects that need several frames to settle still need appropriate caches, repeatable settings, warm-up, and join checks.
 
-If the sequence has a Time Dilation track, time continuity is guaranteed only for segments and resumes that start before its first key. For a multi-machine job, enter that key's frame number in **Frames no part may start at** under **Advanced** in the **TrueODS Multi-Machine** panel (empty by default).
+If the sequence has a Time Dilation track, time continuity is guaranteed only for segments that start before its first key. For a multi-machine job, enter that key's frame number in **Frames no part may start at** under **Advanced** in the **TrueODS Multi-Machine** panel (empty by default).
 
-Temporal Lock is on by default in Pro and applies to segments, resumes and multi-machine jobs; it needs no separate entry. It corresponds to **Consistent Motion Timing** in the job's **True ODS Panoramic** settings in MRQ. That option appears once **Rendering On Several Machines** is switched on; it is on by default, so keep it on.
+Temporal Lock is on by default in TrueODS Distributed and is used for segments and multi-machine jobs; it needs no separate entry. It corresponds to **Consistent Motion Timing** in the job's **True ODS Panoramic** settings in MRQ. That option appears once **Rendering On Several Machines** is switched on; it is on by default, so keep it on.
 
-### Pro: Multi-Machine Rendering
+### TrueODS Distributed: Multi-Machine Rendering
 
 **Automatic configuration checks, frame-range allocation, and output completeness checks.**
 
@@ -150,13 +150,13 @@ This capability handles **task organisation**. Create a job in the **TrueODS Mul
 
 The panel checks each machine's configuration, allocates frame ranges, and checks the collected output for completeness, listing any missing frames. You copy the project to every machine, install the same engine version and plugin build on each, handle third-party resource licensing, set each machine's output location and storage, start or resume rendering on each machine, and copy the other machines' output to the host before collecting; the plugin does not connect to render-queue or farm management software. Passing a configuration check confirms the checked settings meet requirements; final images still need review.
 
-### Pro multi-machine workflow
+### TrueODS Distributed multi-machine workflow
 
-Complete the single-machine [Quick Start](QUICKSTART.md#english), then open **TrueODS Pro > Multi-Machine Rendering**. You create the job on the host, save the project and copy it to the other rendering machines yourself, and collect the frames on the host at the end. On every rendering machine, you run the configuration check, then start, or resume, that machine's assigned frames.
+Complete the single-machine [Quick Start](QUICKSTART.md#english), then open **TrueODS Distributed > Multi-Machine Rendering**. You create the job on the host, save the project and copy it to the other rendering machines yourself, and collect the frames on the host at the end. On every rendering machine, you run the configuration check, then start, or resume, that machine's assigned frames.
 
-**Find TrueODS Pro in the editor's top menu bar, to the right of Help.** Click it and choose **Multi-Machine Rendering** to open the **TrueODS Multi-Machine** panel tab. This entry is available in Pro only; in Standard the top-level menu is named **TrueODS Standard** and has no multi-machine entry.
+**Find TrueODS Distributed in the editor's top menu bar, to the right of Help.** Click it and choose **Multi-Machine Rendering** to open the **TrueODS Multi-Machine** panel tab. This entry is available in TrueODS Distributed only; in the base edition the top-level menu is named **TrueODS** and has no multi-machine entry.
 
-[![Multi-Machine Rendering entry: TrueODS Pro to the right of Help, select Multi-Machine Rendering, and the TrueODS Multi-Machine panel opens](../media/guide/pro-menu-entry.png)](../media/guide/pro-menu-entry.png)
+[![Multi-Machine Rendering entry: TrueODS Distributed to the right of Help, select Multi-Machine Rendering, and the TrueODS Multi-Machine panel opens](../media/guide/distributed-menu-entry.png)](../media/guide/distributed-menu-entry.png)
 
 These are cropped captures of the actual interface; click to view the originals. They locate controls rather than prescribe the example ranges or values. Layout may vary with the installed version.
 
@@ -164,7 +164,7 @@ These are cropped captures of the actual interface; click to view the originals.
 
 Prepare the level, sequence, and MRQ settings. In the job's **True ODS Panoramic** settings, switch on **Rendering On Several Machines**; **Consistent Motion Timing** then appears, already on, so keep it on. In the panel, press **Re-read Queue**, enter a **Job name** (the sequence name is added in front automatically; leave it empty to use the sequence name and date), choose **Whole sequence / Frames** and **Machines**, fill in **Split (optional)** if needed, confirm **Multi-machine stability** (it has a default), then press **Create Job**.
 
-[![Pro job creation: Re-read Queue, job name, frame range, machine count, multi-machine stability option and Create Job button](../media/guide/pro-create-job.png)](../media/guide/pro-create-job.png)
+[![TrueODS Distributed job creation: Re-read Queue, job name, frame range, machine count, multi-machine stability option and Create Job button](../media/guide/distributed-create-job.png)](../media/guide/distributed-create-job.png)
 
 **What to look for:** Press **Re-read Queue** first, and create the job once the panel has read the job in the queue. **Machines** is the number of rendering machines. Leave **Split (optional)** empty for equal shares, or enter one number per machine, separated by commas (for example, 2,1 gives machine 1 twice as many frames as machine 2). Under **Multi-machine stability**, the panel states what each option does to the picture and how much render time it adds; read it before creating the job. To change the job's settings later, press **Recreate Job** to rebuild the job of the same name, then copy the project to every machine again as in step 2 and repeat the step 3 check on each. **Open Job Folder** opens the job's folder.
 
@@ -176,7 +176,7 @@ Press **Save All Now** in the panel (or **File > Save All**), then copy the whol
 
 Select the job in the **Job** dropdown to the left of **Rescan**, then press **Check This Machine**. If the job is not listed, press **Rescan** first. Resolve reported mismatches before rendering.
 
-[![Pro configuration check: Rescan and Check This Machine buttons](../media/guide/pro-check-machine.png)](../media/guide/pro-check-machine.png)
+[![TrueODS Distributed configuration check: Rescan and Check This Machine buttons](../media/guide/distributed-check-machine.png)](../media/guide/distributed-check-machine.png)
 
 #### 4. Start or resume · Every machine
 
@@ -184,7 +184,7 @@ Select the local machine number. On a machine with less video memory than the ho
 
 If a render stops, a **Resume Render Job** button appears in this step: finished parts are skipped and the stopped part continues where it stopped. A resume keeps the frames already written with complete records and renders the missing ones; it also renders the frames just before the first missing frame again and blends them, frame by frame, into the frames already on disk, so the render does not jump where it stopped. If missing frames lie between frames already written, the frames after the gap are also rendered again and blended, and the resume note does not count them. With default settings that is as many frames as the **Handle frames** shown in this step (32 by default); the resume note in this step gives the exact number. These frames take extra render time. The frames as they were before blending are kept in a `_resume_originals` folder next to the output frames.
 
-Progress is shown in the **Watch Console** window: completed frames, the estimated finish time, and GPU usage. It opens automatically when you press **Start Rendering On This Machine**; if you close it, reopen it with **Open Watch Console** in the panel or from the menu **TrueODS Pro > Watch Console**. The editor panel itself does not show live progress.
+Progress is shown in the **Watch Console** window: completed frames, the estimated finish time, and GPU usage. It opens automatically when you press **Start Rendering On This Machine**; if you close it, reopen it with **Open Watch Console** in the panel or from the menu **TrueODS Distributed > Watch Console**. The editor panel itself does not show live progress.
 
 #### 5. Collect and review · Host
 
@@ -194,4 +194,4 @@ After changing the scene, sequence, or key settings, rebuild the corresponding j
 
 ### Product editions and Fab price tiers
 
-**TRUEODS Standard / Pro are product editions. Fab Personal / Professional are Fab price tiers.** Select them separately. Eligibility and rights are governed by the released listing and [full Fab terms](https://www.fab.com/eula).
+**The base TrueODS edition and TrueODS Distributed are product editions. Fab Personal / Professional are Fab price tiers.** Select them separately. Eligibility and rights are governed by the released listing and [full Fab terms](https://www.fab.com/eula).

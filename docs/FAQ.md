@@ -29,30 +29,32 @@ TRUEODS 正在准备 Fab 首发。正式商品链接会在[产品主页](../READ
 
 **Supersample** 调整渲染质量和成本，不改变最终文件尺寸；最终尺寸仍由 **Output Width Per Eye** 决定。
 
-### Standard 能续渲吗？为什么还需要 Pro？
+### TrueODS 基础版能续渲吗？为什么还需要 TrueODS Distributed（分布式渲染版）？
 
-**能。Standard 和 Pro 都有续渲功能**。单机时，在 MRQ 中打开同一任务的 **True ODS Panoramic** 设置，最上方（Setup 区）的 **Resume Render** 按钮只在输出目录中有未完成的渲染时出现，按钮上方的提示会显示已写出的帧数和第一个缺失帧。该按钮会重新渲染整个队列，请让队列里只留这一个任务。Pro 多机任务使用 **TrueODS Multi-Machine** 面板第 4 步的 **Resume Render Job**。
+**能。基础版和分布式渲染版都有续渲功能**。单机续渲入口位于 **True ODS Panoramic > Output**，选择原输出文件夹后，续渲提示和 **Resume Render** 按钮会出现在文件夹下方。新版会恢复原任务保存的关卡、序列与渲染设置；旧版本输出若没有保存任务设置，则使用当前窗口设置，需要自行核对。保留图像、逐帧记录及 `_metadata` 文件夹。
 
-续渲会保留已写出且记录完整的帧，补渲缺失帧；同时把第一个缺失帧之前的若干帧重新渲染，并与磁盘上的原帧逐帧平滑混合后写回，使中断处不跳变。单机续渲的重渲帧数最多等于 **Warm Up Frames**（留 0 时为 32；需开启 **Warm Up Before First Frame**，默认开启，关闭该项或使用 Path Tracing 时不重渲、不混合）；Pro 多机任务在默认设置下等于面板第 4 步显示的 **Handle frames**（默认 32）。续渲提示会写出第一个缺失帧之前需要重渲的帧数与原因（若缺失帧夹在已写出的帧中间，缺帧之后的若干帧也会同样重渲并混合，不计入该帧数），请为这些帧预留额外的渲染时间。混合前的原帧保存在输出目录的 `_resume_originals` 文件夹中。改变内容或设置后，请使用新的输出目录。
+每次可以选择“重渲并混合中断前的 X 帧”或“直接从缺失帧继续，仅预热”。前者增加渲染时间以平滑接点；后者不重渲之前的帧，但光照、雾或反射可能跳变。Path Tracing 直接从首个缺失帧继续。按钮会启动整个队列，因此只想续渲单个任务时应让队列只保留该任务。完整说明见[快速上手](QUICKSTART.md)。
 
-Pro 的重点是两项不同能力：
+分布式渲染版的多机任务仍使用 **TrueODS Multi-Machine** 面板第 4 步的 **Resume Render Job**；默认接点重渲范围由该步骤的 **Handle frames** 控制，详见[多机工作流](EDITIONS.md)。
 
-- **引擎级时序锁定 / Engine-Level Temporal Lock**：从引擎层保持时间驱动效果跨分段、续渲与机器的时间接续。把同一镜头分给多台机器后，各段仍接在同一条时间线上；单纯给机器设置不同帧范围并没有完成这项工作。
-- **多机协同渲染 / Multi-Machine Rendering**：通过 **TrueODS Pro > Multi-Machine Rendering** 自动校验配置、分配帧段、检查收帧完整性，减少逐台手工整理任务。用户仍需部署工程，并在各台机器上启动或续渲。
+分布式渲染版的重点是两项不同能力：
+
+- **引擎级时序锁定 / Engine-Level Temporal Lock**：从引擎层保持时间驱动效果跨分段与机器的时间接续。把同一镜头分给多台机器后，各段仍接在同一条时间线上；单纯给机器设置不同帧范围并没有完成这项工作。
+- **多机协同渲染 / Multi-Machine Rendering**：通过 **TrueODS Distributed > Multi-Machine Rendering** 自动校验配置、分配帧段、检查收帧完整性，减少逐台手工整理任务。用户仍需部署工程，并在各台机器上启动或续渲。
 
 两版画质相关的共有能力相同。选择依据与完整步骤见[版本与工作流](EDITIONS.md)。
 
 ### 有时序锁定，所有水、火、粒子都能在接点完全一样吗？
 
-不保证。时序锁定解决的是**引擎内时间接续**。未烘焙的模拟、随机或外部驱动的效果，以及需要多帧才能稳定的光照和特效，仍可能需要缓存、相应的可重复设置和预热。序列含 Time Dilation 轨道时，只有在其第一个关键帧之前开始的分段和续渲才保证时间接续；多机任务请在 **TrueODS Multi-Machine** 面板 **Advanced** 区的 **Frames no part may start at** 中填入该关键帧的帧号（默认留空）。
+不保证。时序锁定解决的是**引擎内时间接续**。未烘焙的模拟、随机或外部驱动的效果，以及需要多帧才能稳定的光照和特效，仍可能需要缓存、相应的可重复设置和预热。序列含 Time Dilation 轨道时，只有在其第一个关键帧之前开始的分段才保证时间接续；多机任务请在 **TrueODS Multi-Machine** 面板 **Advanced** 区的 **Frames no part may start at** 中填入该关键帧的帧号（默认留空）。
 
 开始多机任务前，应使用相同的工程内容、引擎与插件版本，最好使用同一级别的显卡（同一系列、相同显存），运行配置检查，并测试实际接点。预热量按场景实测确定。配置检查通过不等于所有模拟状态一致，也不替代接点画面检查。
 
-### “无缝体积雾”与 Pro 的时序锁定有什么不同？
+### “无缝体积雾”与分布式渲染版的时序锁定有什么不同？
 
 **无缝体积雾是两版共有的画面能力**，关注一张全景图不同方向之间的体积雾衔接，让外景大气和内景光束在环视中连续。
 
-**Pro 时序锁定关注不同时间段之间的接续**，例如前半段和后半段分别由两台机器渲染。空间接缝与跨段时间接续是不同问题；体积效果仍应在自己的场景中检查。
+**分布式渲染版的时序锁定关注不同时间段之间的接续**，例如前半段和后半段分别由两台机器渲染。空间接缝与跨段时间接续是不同问题；体积效果仍应在自己的场景中检查。
 
 ### EXR、half 与有损压缩该怎么选？
 
@@ -84,9 +86,9 @@ EXR 与 PNG 外观不同，通常需要先检查读取软件的线性输入解�
 
 先按[快速上手](QUICKSTART.md)渲染单帧，再测试 8K 的普通帧与最重帧。**VRAM Mode** 可调整内存与耗时的取舍；它不保证整机内存或速度的固定比例。公布的测试数据需要结合其硬件、场景类别、设置和测量范围阅读；公布的渲染耗时均在 Unreal Engine 5.7 上、开启 DLAA 测得。
 
-### TRUEODS Standard / Pro 与 Fab Personal / Professional 是一回事吗？
+### TrueODS 基础版 / 分布式渲染版与 Fab Personal / Professional 是一回事吗？
 
-不是。**TRUEODS Standard / Pro 是插件的产品版本**；**Fab Personal / Professional 是 Fab 价格档**。选择 Pro 产品版本与是否需要 Professional 价格档是两个独立问题。
+不是。**TrueODS 基础版 / 分布式渲染版是插件的产品版本**；**Fab Personal / Professional 是 Fab 价格档**。选择分布式渲染版这一产品版本与是否需要 Professional 价格档是两个独立问题。
 
 购买时请依照正式商品页、适用资格与 [Fab 完整许可条款](https://www.fab.com/eula)选择；本 FAQ 不增加或替代平台许可。技术问题请见[支持说明](SUPPORT.md)，订单及退款请使用 [Fab 官方购买帮助](https://dev.epicgames.com/documentation/en-us/fab/purchasing-and-downloading-assets-in-fab)。
 
@@ -115,30 +117,32 @@ When **Resolution Preset** is set to a fixed preset (not **Custom (manual)**), s
 
 **Supersample** changes rendering quality and cost, not final file dimensions. **Output Width Per Eye** still determines the output dimensions.
 
-### Can Standard resume? Why would I need Pro?
+### Can the base TrueODS edition resume? Why would I need TrueODS Distributed?
 
-**Both Standard and Pro can resume.** On a single machine, open the same job's **True ODS Panoramic** settings in MRQ: the **Resume Render** button at the top (Setup section) appears only when the output folder holds an unfinished render, and the notice above it shows how many frames were written and the first missing frame. The button renders the whole queue again, so keep only this job in the queue. A Pro multi-machine job resumes with **Resume Render Job** in step 4 of the **TrueODS Multi-Machine** panel.
+**Both editions can resume.** For a single machine, choose the original output folder under **True ODS Panoramic > Output**. The notice and **Resume Render** button appear below that folder. The new workflow restores the saved level, sequence, and render settings; older output without saved job settings uses the current window's settings, which you must check. Keep the images, per-frame records, and `_metadata` folder.
 
-A resume keeps every frame already written with a complete record and renders the missing frames. It also renders the frames just before the first missing frame again and blends them, frame by frame, into the frames on disk, so the render does not jump where it stopped. On a single machine that is up to as many frames as **Warm Up Frames** (32 when left at 0; it needs **Warm Up Before First Frame**, on by default, and does not happen with Path Tracing); for a Pro multi-machine job with default settings it is the **Handle frames** shown in step 4 of the panel (32 by default). The resume notice states the number of frames before the first missing frame and the reason (if missing frames lie between frames already written, the frames after the gap are also rendered again and blended, and are not counted there); allow extra render time for these frames. The frames as they were before blending are kept in the `_resume_originals` folder in the output folder. Use a new output folder after changing content or settings.
+Each time, choose to re-render and blend X frames before the gap, or continue at the missing frame with warm-up only. Blending adds render time to smooth the join; direct continuation avoids re-rendering earlier frames but lighting, fog, or reflections may jump. Path Tracing continues directly. The button starts the whole queue, so keep only this job if it is the only one you want to resume. See [Quick Start](QUICKSTART.md#english).
 
-Pro adds two distinct capabilities:
+TrueODS Distributed multi-machine jobs still use **Resume Render Job** in step 4 of **TrueODS Multi-Machine**. The default overlap is controlled by **Handle frames** in that step; see the [multi-machine workflow](EDITIONS.md#english).
 
-- **Engine-Level Temporal Lock** maintains the time continuity of time-driven effects across segments, resumes, and machines at the engine level. Parts of one shot stay on the same timeline. Assigning different frame ranges alone does not provide this capability.
-- **Multi-Machine Rendering**, available through **TrueODS Pro > Multi-Machine Rendering**, provides automatic configuration checks, frame-range allocation, and output completeness checks. It reduces repetitive task preparation on each machine. Users deploy the project and start or resume work on each machine.
+TrueODS Distributed adds two distinct capabilities:
+
+- **Engine-Level Temporal Lock** maintains the time continuity of time-driven effects across segments and machines at the engine level. Parts of one shot stay on the same timeline. Assigning different frame ranges alone does not provide this capability.
+- **Multi-Machine Rendering**, available through **TrueODS Distributed > Multi-Machine Rendering**, provides automatic configuration checks, frame-range allocation, and output completeness checks. It reduces repetitive task preparation on each machine. Users deploy the project and start or resume work on each machine.
 
 The two editions share the same core image capabilities. See [Editions and Workflow](EDITIONS.md#english) for a comparison and steps.
 
 ### Does Temporal Lock make every water, fire, or particle simulation identical at a join?
 
-Not guaranteed. Temporal Lock addresses **engine-time continuity**. Unbaked simulations, random or externally driven effects, and lighting or effects that need several frames to settle may still require caches, repeatable settings, and warm-up. If the sequence has a Time Dilation track, time continuity is guaranteed only for segments and resumes that start before its first key; for a multi-machine job, enter that key's frame number in **Frames no part may start at** under **Advanced** in the **TrueODS Multi-Machine** panel (empty by default).
+Not guaranteed. Temporal Lock addresses **engine-time continuity**. Unbaked simulations, random or externally driven effects, and lighting or effects that need several frames to settle may still require caches, repeatable settings, and warm-up. If the sequence has a Time Dilation track, time continuity is guaranteed only for segments that start before its first key; for a multi-machine job, enter that key's frame number in **Frames no part may start at** under **Advanced** in the **TrueODS Multi-Machine** panel (empty by default).
 
 Use matching project content, engine, and plugin versions on the machines, preferably with the same GPU family and memory, run the configuration check, and test actual joins. Determine warm-up from scene tests. A configuration check does not certify that every simulation state matches or replace visual inspection of joins.
 
-### How does seamless volumetric fog differ from Pro Temporal Lock?
+### How does seamless volumetric fog differ from Temporal Lock in TrueODS Distributed?
 
 **Seamless volumetric fog is shared by both editions.** It concerns fog continuity between viewing directions within a panorama, including outdoor atmosphere and indoor light shafts.
 
-**Pro Temporal Lock concerns continuity between time segments**, such as the first and second halves of a shot rendered on separate machines. Spatial seams and time continuity are different problems. Test volumetric effects in your own scene.
+**Temporal Lock in TrueODS Distributed concerns continuity between time segments**, such as the first and second halves of a shot rendered on separate machines. Spatial seams and time continuity are different problems. Test volumetric effects in your own scene.
 
 ### How should I choose EXR, half, and compression?
 
@@ -170,8 +174,8 @@ There is no universal time per frame or VRAM threshold. Resolution, sampling, su
 
 Follow the [Quick Start](QUICKSTART.md#english), then test ordinary and demanding 8K frames. **VRAM Mode** offers memory/time trade-offs, not fixed ratios for total memory or speed. Read benchmark figures together with their hardware, scene category, settings, and measurement scope. The published render times were measured on Unreal Engine 5.7 with DLAA.
 
-### Are TRUEODS Standard / Pro the same as Fab Personal / Professional?
+### Are the base TrueODS edition and TrueODS Distributed the same as Fab Personal / Professional?
 
-No. **TRUEODS Standard / Pro are product editions of the plugin. Fab Personal / Professional are Fab price tiers.** Choosing Pro and determining which Fab price tier you need are separate decisions.
+No. **The base TrueODS edition and TrueODS Distributed are product editions of the plugin. Fab Personal / Professional are Fab price tiers.** Choosing TrueODS Distributed and determining which Fab price tier you need are separate decisions.
 
 Use the released listing, eligibility criteria, and [full Fab licence terms](https://www.fab.com/eula) when purchasing. This FAQ does not add to or replace the platform licence. See [Support](SUPPORT.md#english) for technical help and [Fab's official purchasing help](https://dev.epicgames.com/documentation/en-us/fab/purchasing-and-downloading-assets-in-fab) for orders and refunds.

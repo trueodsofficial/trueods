@@ -1,0 +1,126 @@
+{
+  "release_tag": "samples-20260928",
+  "assets": [
+    {
+      "name": "CP01_00108668.png",
+      "bytes": 299587123,
+      "sha256": "5618ca7f33234618029abf3762478d4e20664fa68139dccdae4ddb8342f83cf4",
+      "kind": "original-png",
+      "width": 8192,
+      "height": 8192,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/CP01_00108668.png"
+    },
+    {
+      "name": "checkpoint01_00108619.png",
+      "bytes": 215501775,
+      "sha256": "9bd3a1a1bfd8a779485607a20a38f38453cc85a038d3d1902c88f7a25b31d145",
+      "kind": "original-png",
+      "width": 8192,
+      "height": 8192,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/checkpoint01_00108619.png"
+    },
+    {
+      "name": "coffee01_00108409.png",
+      "bytes": 295751965,
+      "sha256": "bd5a050948d07a700d3e5086ea8a6c3ad2a375e2dc9705154cce5a42f7ecae77",
+      "kind": "original-png",
+      "width": 8192,
+      "height": 8192,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee01_00108409.png"
+    },
+    {
+      "name": "coffee02_00108360.png",
+      "bytes": 293484062,
+      "sha256": "49523406d1c728c7f2c15481f851e86e10cc33229f4eb91fa1ce1c9e1cbe314b",
+      "kind": "original-png",
+      "width": 8192,
+      "height": 8192,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.png"
+    },
+    {
+      "name": "coffee_sample.mp4",
+      "bytes": 340968243,
+      "sha256": "7b782c03ad9faa46275b689842cffd2e717ab5b87d33f4302a9d060d6e0f8ccf",
+      "kind": "original-video",
+      "width": 8192,
+      "height": 8192,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee_sample.mp4"
+    },
+    {
+      "name": "labdark01_00108668.png",
+      "bytes": 332608459,
+      "sha256": "e1550d13270ccc4fc51ebda090b596e5eafd88c443ba22245c30405004d5251f",
+      "kind": "original-png",
+      "width": 8192,
+      "height": 8192,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/labdark01_00108668.png"
+    },
+    {
+      "name": "CP01_00108668.jpg",
+      "bytes": 27222693,
+      "sha256": "e3e5a56dc6c95b8d6928773580162baf46f719f23e10670008c32c42c478182a",
+      "kind": "jpeg-quality-100",
+      "width": 8192,
+      "height": 8192,
+      "quality": 100,
+      "chroma_subsampling": "4:4:4",
+      "bit_depth": 8,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/CP01_00108668.jpg"
+    },
+    {
+      "name": "checkpoint01_00108619.jpg",
+      "bytes": 36246112,
+      "sha256": "d6695a65234b7573bc15dc7d578105a147acc24937bfe12c296dce98edf11924",
+      "kind": "jpeg-quality-100",
+      "width": 8192,
+      "height": 8192,
+      "quality": 100,
+      "chroma_subsampling": "4:4:4",
+      "bit_depth": 8,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/checkpoint01_00108619.jpg"
+    },
+    {
+      "name": "coffee01_00108409.jpg",
+      "bytes": 26541193,
+      "sha256": "386dd05c4c92910f178dd6e7b83e409661019af678b9b39d7e9009b005e2b783",
+      "kind": "jpeg-quality-100",
+      "width": 8192,
+      "height": 8192,
+      "quality": 100,
+      "chroma_subsampling": "4:4:4",
+      "bit_depth": 8,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee01_00108409.jpg"
+    },
+    {
+      "name": "coffee02_00108360.jpg",
+      "bytes": 25482726,
+      "sha256": "5e0ab282a3918d81cbbd2f2a3f1bcf65ee090da14699e08528c5ae562165d246",
+      "kind": "jpeg-quality-100",
+      "width": 8192,
+      "height": 8192,
+      "quality": 100,
+      "chroma_subsampling": "4:4:4",
+      "bit_depth": 8,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.jpg"
+    },
+    {
+      "name": "labdark01_00108668.jpg",
+      "bytes": 38637963,
+      "sha256": "706b73b3460793b489c75e55b0fd84d67c6feee5eb9aca1612806bfa01fc9066",
+      "kind": "jpeg-quality-100",
+      "width": 8192,
+      "height": 8192,
+      "quality": 100,
+      "chroma_subsampling": "4:4:4",
+      "bit_depth": 8,
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/labdark01_00108668.jpg"
+    },
+    {
+      "name": "TrueODS-8K-JPG-quality100.zip",
+      "bytes": 154132972,
+      "sha256": "b07db044f93bf69ce917102b8eff603f26268efdaf47749a2db5c1ab6316a1cc",
+      "kind": "jpeg-bundle",
+      "url": "https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/TrueODS-8K-JPG-quality100.zip"
+    }
+  ]
+}
