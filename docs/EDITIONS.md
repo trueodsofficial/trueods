@@ -102,7 +102,7 @@ TRUEODS 正在准备 Fab 首发。本页介绍版本定位与工作流，正式�
 
 ## English
 
-**The base TrueODS edition suits independent production and shots completed on one machine. TrueODS Distributed suits teams rendering parts of the same shot in parallel across several machines.** Both share the core image capabilities; TrueODS Distributed adds **Engine-Level Temporal Lock** (picture-time continuity across segments) and **Multi-Machine Rendering** (task organisation across machines).
+**The base TrueODS edition suits independent production and shots completed on one machine. TrueODS Distributed suits teams rendering parts of the same shot in parallel across several machines.** Both share the core image capabilities; TrueODS Distributed adds **Engine-Level Temporal Lock** (scene-time continuity across segments) and **Multi-Machine Rendering** (task organisation across machines).
 
 TRUEODS is preparing for its Fab launch. This page explains edition positioning and workflow. The released listings and packages will define final features and compatibility.
 
@@ -134,13 +134,13 @@ The base edition can resume and users can arrange frame ranges themselves. Those
 
 **The frame numbers line up. The scene's motion should, too.**
 
-For example, the first and second halves of a shot are rendered separately: on two machines, or on one machine in two runs that each start at their own first frame. Frame numbers must join, and time-driven effects must also arrive at the matching moment. TrueODS Distributed maintains time continuity at the engine level across segments, addressing time offsets that simply assigning frame ranges may leave unresolved.
+For example, the first and second halves of a shot are rendered separately: on two machines, or on one machine in two runs that each start at their own first frame. The frame numbers must line up, and time-driven effects must reach the same point in time. TrueODS Distributed maintains time continuity at the engine level across segments, addressing time offsets that simply assigning frame ranges may leave unresolved.
 
 This capability handles **continuity in scene time**; it does not guarantee that every simulation matches exactly. Unbaked simulations, random or externally driven effects, and lighting or effects that need several frames to settle still need appropriate caches, repeatable settings, warm-up, and join checks.
 
 If the sequence has a Time Dilation track, time continuity is guaranteed only for segments that start before its first key. For a multi-machine job, enter that key's frame number in **Frames no part may start at** under **Advanced** in the **TrueODS Multi-Machine** panel (empty by default).
 
-Temporal Lock is on by default in TrueODS Distributed and is used for segments and multi-machine jobs; it needs no separate entry. It corresponds to **Consistent Motion Timing** in the job's **True ODS Panoramic** settings in MRQ. That option appears once **Rendering On Several Machines** is switched on; it is on by default, so keep it on.
+Temporal Lock is on by default in TrueODS Distributed and is used for segments and multi-machine jobs; you do not need to open a separate tool. It corresponds to **Consistent Motion Timing** in the job's **True ODS Panoramic** settings in MRQ. That option appears once **Rendering On Several Machines** is switched on; it is on by default, so keep it on.
 
 ### TrueODS Distributed: Multi-Machine Rendering
 
@@ -152,17 +152,17 @@ The panel checks each machine's configuration, allocates frame ranges, and check
 
 ### TrueODS Distributed multi-machine workflow
 
-Complete the single-machine [Quick Start](QUICKSTART.md#english), then open **TrueODS Distributed > Multi-Machine Rendering**. You create the job on the host, save the project and copy it to the other rendering machines yourself, and collect the frames on the host at the end. On every rendering machine, you run the configuration check, then start, or resume, that machine's assigned frames.
+Complete the single-machine [Quick Start](QUICKSTART.md#english), then open **TrueODS Distributed > Multi-Machine Rendering**. You create the job on the host, save the project and copy it to the other rendering machines yourself, and collect the frames on the host at the end. On every rendering machine, you run the configuration check, then start or resume rendering that machine's assigned frames.
 
 **Find TrueODS Distributed in the editor's top menu bar, to the right of Help.** Click it and choose **Multi-Machine Rendering** to open the **TrueODS Multi-Machine** panel tab. This entry is available in TrueODS Distributed only; in the base edition the top-level menu is named **TrueODS** and has no multi-machine entry.
 
 [![Multi-Machine Rendering entry: TrueODS Distributed to the right of Help, select Multi-Machine Rendering, and the TrueODS Multi-Machine panel opens](../media/guide/distributed-menu-entry.png)](../media/guide/distributed-menu-entry.png)
 
-These are cropped captures of the actual interface; click to view the originals. They locate controls rather than prescribe the example ranges or values. Layout may vary with the installed version.
+These are cropped captures of the actual interface; click to view the originals. They show where to find the controls; the example ranges and values are not recommendations. Layout may vary with the installed version.
 
 #### 1. Create the job · Host
 
-Prepare the level, sequence, and MRQ settings. In the job's **True ODS Panoramic** settings, switch on **Rendering On Several Machines**; **Consistent Motion Timing** then appears, already on, so keep it on. In the panel, press **Re-read Queue**, enter a **Job name** (the sequence name is added in front automatically; leave it empty to use the sequence name and date), choose **Whole sequence / Frames** and **Machines**, fill in **Split (optional)** if needed, confirm **Multi-machine stability** (it has a default), then press **Create Job**. A multi-machine job writes one panorama per frame, so **Format > Projection** must be Equirectangular; with Cubemap Faces, **Create Job** refuses and says why. Render cube faces on one machine.
+Prepare the level, sequence, and MRQ settings. In the job's **True ODS Panoramic** settings, switch on **Rendering On Several Machines**; **Consistent Motion Timing** then appears, already on, so keep it on. In the panel, press **Re-read Queue**, enter a **Job name** (the sequence name is added in front automatically; leave it empty to use the sequence name and date), choose **Whole sequence / Frames** and **Machines**, fill in **Split (optional)** if needed, confirm **Multi-machine stability** (it has a default), then press **Create Job**. A multi-machine job writes one panorama per frame, so **Format > Projection** must be Equirectangular; with Cubemap Faces, **Create Job** rejects the job and explains why. Render cube faces on one machine.
 
 [![TrueODS Distributed job creation: Re-read Queue, job name, frame range, machine count, multi-machine stability option and Create Job button](../media/guide/distributed-create-job.png)](../media/guide/distributed-create-job.png)
 
@@ -188,7 +188,7 @@ Progress is shown in the **Watch Console** window: completed frames, the estimat
 
 #### 5. Collect and review · Host
 
-Copy the other machines' output to the host as the panel directs, then press **Collect Frames**. It gathers every machine's frames into one place and lists missing frames, and it compares the frames rendered on both sides of each join; once every frame is there, it fades across each join for EXR output (with frames missing it does not: fill them in, then press **Collect Frames** again), and the frames it replaces are kept in the `dissolve_originals` folder inside the collected folder. After reviewing the missing-frame and collection reports, still play across the joins yourself to check timing, simulations, fog, and lighting.
+Copy the other machines' output to the host as the panel directs, then press **Collect Frames**. It gathers every machine's frames into one place, lists missing frames, and compares the frames rendered on both sides of each join. Once all frames have been collected, it applies a crossfade at each join for EXR output. If frames are missing, it skips the crossfades; fill in the missing frames, then press **Collect Frames** again. The frames replaced by blending are kept in the `dissolve_originals` folder inside the collected folder. After reviewing the missing-frame and collection reports, still play across the joins yourself to check timing, simulations, fog, and lighting.
 
 After changing the scene, sequence, or key settings, rebuild the corresponding job with **Recreate Job**, copy the project to every machine again as in step 2, and repeat the step 3 check on each. Preserve old output and use a separate directory for new results. Determine caches and warm-up through tests on the actual shot.
 

@@ -663,7 +663,7 @@ Scope: Unreal Engine 5.7 and 5.8, the Windows 64-bit editor, DX12 / SM6, and Mov
 
     [![Movie Render Queue: one job, Settings column shows Unsaved Config](../media/guide/qs-mrq-queue.png)](../media/guide/qs-mrq-queue.png)
 
-    *The MRQ queue. Click Unsaved Config in the Settings column to open the job settings. Render (Local), bottom right, starts the render (section 4). The job in the capture already has True ODS Panoramic added and was renamed, so the Output column shows the folder the plugin wrote (a local path, obscured in the capture). A brand-new job shows MRQ's default output directory here.*
+    *The MRQ queue. Click Unsaved Config in the Settings column to open the job settings. Render (Local), bottom right, starts the render (section 4). The job in the capture already has True ODS Panoramic added and was renamed, so the Output column shows the output folder set by the plugin (a local path, obscured in the capture). A brand-new job shows MRQ's default output directory here.*
 
 2. Click the link in the job's **Settings** column (**Unsaved Config** for a new job) to open the job settings window. **This window edits a temporary copy of the job:**
     - when you have finished the settings in section 3, click **Accept** at its bottom right to apply them to the job (section 4);
@@ -717,7 +717,7 @@ Select **True ODS Panoramic** in the settings list. All of the plugin's paramete
 **Checking the exposure:** when the plugin panel first opens, the plugin reads the exposure of the current viewport once. The value it read is shown in **Exposure Reference** in the Look section.
 
 - If the viewport brightness is what you want, leave it.
-- To judge by another direction, turn the viewport there and press **Use Scene Exposure** in Look.
+- To set the exposure from another viewing direction, point the viewport in that direction and press **Use Scene Exposure** in Look.
 - If it reads "No viewport exposure yet…", nothing was read yet; see the Look section below.
 
 **The panel has three different "warm-ups":**
@@ -731,7 +731,7 @@ The 64 extra frames in MRQ's Output are reserved for the second and third kinds.
 The parameters below follow the plugin panel from top to bottom. Each entry says what it controls, its default, when to change it, and whether changing it affects image quality, render speed or video memory (VRAM).
 
 - A greyed-out row has no effect with the current settings.
-- A row that only appears under certain conditions says so.
+- For rows that appear only under certain conditions, those conditions are noted below.
 - Hidden and experimental properties that are not in the panel are left out.
 
 [![All True ODS Panoramic parameters at their defaults](../media/guide/qs-panel-overview.png)](../media/guide/qs-panel-overview.png)
@@ -784,7 +784,7 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
     - **For 360, Top / Bottom is recommended:** at 8192 the image is 8192×8192 (8192×4096 per eye).
     - **For 180, Side by Side is recommended:** at 8192 the image is 8192×4096 (4096×4096 per eye). The default is Top / Bottom, so switch to Side by Side yourself when you choose 180.
 
-    If your player or post pipeline needs something else, follow it.
+    Use a different layout if your player or post-production pipeline requires it.
 
 - **IPD (cm)** (default 6.5; shown only with Stereo on): the distance between the eyes, which sets how strong the depth is. Larger values give more depth and make close objects less comfortable to view. No effect on speed.
 - **Pole Merge Angle** (default 60; shown only with Stereo on): the latitude from which the two eyes blend towards mono, fully merged straight up and straight down. Full stereo is uncomfortable in a headset when you look up or down. 90 turns the blend off. Affects viewing comfort only.
@@ -824,7 +824,7 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
     - shadow sharpness and ray-traced shadow samples tuned;
     - texture loading boosted.
 
-    Turn it off only when one of them fights your scene. Six manual rows then appear:
+    Turn it off only if one of these settings causes problems in your scene. Six manual rows then appear:
 
     - **Disable Motion Blur**
     - **Remove Dark Halos**: removes the dark edges and halos where objects meet each other, walls or the floor; it is not lens vignetting. Indirect light loses a little detail.
@@ -863,7 +863,7 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
 - **Also Write EXR (HDR master)** (default on): also writes a linear, ungraded HDR master `.exr`. Grade from this file; the PNG / JPG / TIFF beside it is only a version with the preset look applied.
 - **EXR Compression** (default **DWAB**; shown only when EXR is written): DWAB gives small files with no visible loss at normal grading exposures, but it is lossy. Choose ZIP or PIZ for lossless files, several times larger. None is larger still.
 - **Render With Editor Closed** (default on): when the render starts, the editor closes, a background process renders, and a progress window opens.
-    - It saves memory. On a large scene at high resolution, the editor's own share is what most often runs a machine out of memory.
+    - It saves memory. On a large scene at high resolution, the editor's own memory usage is what most often causes the machine to run out of memory.
     - The picture is identical to an in-editor render.
     - The editor closes, so check every setting before you start. Turn this off to render inside the editor.
 
@@ -887,11 +887,11 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
 
 - **Exposure Reference** (read-only): the viewport exposure read since the panel was opened, for example "EV100 -1.01 = viewport now (+1 = one stop darker)". After you reopen the panel this row can be empty. That does not mean the exposure was lost; the value in Manual EV100 still applies.
 - **Scene Exposure → Use Scene Exposure** (button): reads the exposure of the current perspective viewport into Manual EV100, with no render needed.
-    - Before pressing it, turn the viewport to the direction the exposure should be judged by.
+    - Before pressing it, point the viewport in the direction you want to use as the exposure reference.
     - Afterwards, check Exposure Reference. "No viewport exposure yet…" means nothing was read yet: click in the viewport so it renders a frame, then press again.
     - The first time the panel opens, if Exposure is Manual EV100 and nothing has been read yet, the plugin reads the viewport once by itself. That is why Manual EV100 in the capture shows the captured scene's value.
 
-- **Auto Exposure Tolerance (stops)** (default 1.0): only used when Exposure is Auto; greyed out otherwise. It sets how many stops the camera's exposure may differ from the metered value before Auto stops trusting the camera. Raise it if Auto overrides a deliberately dark or bright look.
+- **Auto Exposure Tolerance (stops)** (default 1.0): only used when Exposure is Auto; greyed out otherwise. It sets how many stops the camera's exposure may differ from the metered value before Auto switches to the metered value. Raise it if Auto overrides a deliberately dark or bright look.
 - **Manual EV100** (shown only when Exposure is Manual EV100): the fixed exposure. Lower is brighter; +1 is one stop darker.
     - It is the plugin's own scale and does not add the scene's Exposure Compensation, so do not copy the number from a camera's post-process settings.
     - Normally read it with the button above rather than typing it.
@@ -914,7 +914,7 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
 
 - **Anti-Aliasing Method** (default **TSR (recommended)**; shown only with the Deferred renderer):
     - **TSR**: steady highlights and indirect light, matching the viewport.
-    - **TAA**: a little noisier, occasionally kinder to fast movement.
+    - **TAA**: a little noisier, but may handle fast motion better in some cases.
     - **Off**: fastest, but highlights and indirect light shimmer from frame to frame.
 
 - **Full Quality On Every Frame** (default on; Deferred only): gives every frame the full quality of the first. It costs extra time when Samples Per Pane is 2 or more. Off makes later frames faster but can show a square glow near volumetric-fog lights.
@@ -943,7 +943,7 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
 - **Samples Per Pane** (default 2; Deferred only): the sample count.
     - 2 keeps hair, wires, railings and foliage clean, and Thin Detail Stability needs it.
     - 1 is faster and looks the same on scenes without thin detail.
-    - Render time rises with the count, but by less than the count.
+    - Render time increases with the sample count, but less than proportionally.
 
 - **Warm Up Before First Frame** (default on; Deferred only): renders and throws away up to Warm Up Frames frames first, so the first written frame looks like the frames after it. The difference shows most in fog, volumetric lighting and indirect light. Resume blending also depends on it (section 6).
     - The warm-up uses the sequence frames before the start of the range; it can only use as many as exist.
@@ -959,7 +959,7 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
 - **Render Report** (default on): writes `trueods_advisory.md` (plus a `.jsonl`) into `_metadata` in the output folder. It only records; it changes nothing in the scene and costs no render time. It lists:
     - the number of cloth and hair components in the scene;
     - simulations whose result can differ from render to render (under the heading "Cross-machine consistency", which also appears for single-machine renders);
-    - per frame, how many texture loads had to be waited for, and in which directions textures arrived late, where that area may look soft.
+    - for each frame, how many texture loads the renderer had to wait for and the viewing directions where late-loading textures may appear soft.
 
     Low-VRAM warnings are not in this report; they appear only in the log and the progress notification.
 
@@ -1001,7 +1001,7 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
 
     - None of this is required.
 
-1. **Save a preset first (recommended):** open the preset button at the top of the job settings window (it reads **Unsaved Config** for a new job) and choose **Save As Preset** to save it in the project. The queue is empty when you reopen the project, and the preset brings the settings back. (Resuming does not need it: the plugin keeps the settings with the frames; see section 6.)
+1. **Save a preset first (recommended):** click the preset button at the top of the job settings window (it reads **Unsaved Config** for a new job) and choose **Save As Preset** to save it in the project. The queue is empty when you reopen the project, and the preset brings the settings back. (Resuming does not need it: the plugin keeps the settings with the frames; see section 6.)
 2. Click **Accept** at the bottom right of the job settings window. The window closes and the settings are applied to the job.
 3. Click **Render (Local)** at the bottom right of the MRQ window. With the defaults, this happens in order:
     1. every modified level and asset is **saved without asking** (Save Modified Content First);
@@ -1048,7 +1048,7 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
     - **Fast (No Dynamic Shadows)**: lit, but without shadows, reflections, volumetric fog, clouds and similar effects.
     - **Quality**: full lighting, closest to the final picture, and the slowest.
 
-    Fast and Quality keep the last picture while playback or the camera moves, and refresh once it stops.
+    Fast and Quality keep showing the last image during playback or camera movement, then refresh when playback or movement stops.
 
 - **Pause Viewport** (default on): pauses the level viewports' continuous redraw while the preview is open, to spare the GPU. The viewport still redraws while you work in it, and everything returns to normal when the preview closes.
 - **Resolution** (default **256 / face**; 256, 512 or 1024): higher is sharper and uses more of the GPU.
@@ -1127,14 +1127,14 @@ Run the check again after changes. **A clean report does not guarantee a correct
 
 ### 6. Resuming a stopped render (both editions)
 
-If a render stops part-way (the process was closed, the power went, a frame failed), the plugin can carry on instead of starting over. Every time a render starts, the plugin keeps a copy of the job's settings in the output folder's `_metadata`, and resuming puts them back.
+If a render stops part-way (the process was closed, the power went out, a frame failed), the plugin can carry on instead of starting over. Every time a render starts, the plugin keeps a copy of the job's settings in the output folder's `_metadata`, and resuming puts them back.
 
 1. **Open the settings of any job.** After you reopen the project the MRQ queue is usually empty; add a job. Any level and sequence will do: Resume Render switches the job back to the level, sequence and settings of that render. Keep only this job in the queue: Resume Render renders the whole queue, as Render (Local) does, and with several jobs in the queue it may not be able to tell which one to replace.
 2. **Point the output folder at that render.** In the **Output** section of True ODS Panoramic, set **Panorama Output Folder** to that render's output folder (leave it empty if it was empty). When the folder holds a render that did not finish, a yellow notice appears under it: how many frames are done, the frame it stopped before, and whether its settings were kept with the frames.
 
     [![Resume notice in the Output section](../media/guide/qs-resume-output.png)](../media/guide/qs-resume-output.png)
 
-    *The resume notice and choices in the Output section when the output folder holds a render that stopped before frame 2 (UE 5.7, base edition). The button stays grey until a way to join is chosen.*
+    *The resume notice and choices in the Output section when the output folder holds a render that stopped before frame 2 (UE 5.7, base edition). The button stays grey until you choose a resume option.*
 
 3. **Choose how the stop point is joined** (you choose every time; there is no default):
     - **Render again and blend in the last X frames before frame N:** renders the X frames before frame N again and writes each as a blend with the frame already there, the new render's share rising frame by frame (25%, 50%, 75% for X = 3). From frame N on, every frame is new.
@@ -1159,9 +1159,9 @@ If a render stops part-way (the process was closed, the power went, a frame fail
 
 **Notes:**
 
-- Before resuming, do not change the sequence or the scene. The plugin checks each frame's settings record; frames whose record does not match are rendered again. For the level, its sublevels and the sequence it only checks whether they were saved after the frames (the third choice above); other assets such as materials and textures are not checked, and neither are unsaved changes.
+- Before resuming, do not change the sequence or the scene. The plugin checks each frame's settings record; frames whose record does not match are rendered again. For the level, its sublevels and the sequence it only checks whether they were saved after the frames were rendered (the third choice above); other assets such as materials and textures are not checked, and neither are unsaved changes.
 - Do not delete frames already written, or the `_metadata` folder inside the output folder (it holds the progress record, the per-frame records and the copy of the job's settings).
-- Output from older plugin versions has no copy of the settings: the notice says "settings were not kept", and Resume Render uses the settings in the settings window. They must then match that render exactly (for example imported from the preset saved then); frames that do not match are rendered again.
+- Output from older plugin versions has no copy of the settings: the notice says "settings were not kept", and Resume Render uses the settings in the settings window. They must then match that render exactly (for example, by importing the preset saved for that render); frames that do not match are rendered again.
 
 **TrueODS Distributed multi-machine jobs:** after a stop, use **Resume Render Job** in step 4 of the **TrueODS Multi-Machine** window. See [Editions and Workflow](EDITIONS.md#english) for the entry point and steps.
 

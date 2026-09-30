@@ -96,7 +96,7 @@ TRUEODS is preparing for its Fab launch. The [product home](../README.md) will l
 
 ### What does ODS mean?
 
-**ODS stands for Omnidirectional Stereo**: 360° stereo panoramas with correct stereo parallax. Use a compatible stereo player and VR headset with the matching layout. This supports looking around; freely changing the viewing position in 6DoF volumetric video is a different delivery format.
+**ODS stands for Omnidirectional Stereo**: 360° stereoscopic panoramas with correct parallax. Use a compatible stereo player and VR headset with the matching layout. This supports looking around; freely changing the viewing position in 6DoF volumetric video is a different delivery format.
 
 ### Does 8K mean 8192 × 8192 for each eye?
 
@@ -123,7 +123,7 @@ TrueODS Distributed multi-machine jobs still use **Resume Render Job** in step 4
 
 TrueODS Distributed adds two distinct capabilities:
 
-- **Engine-Level Temporal Lock** maintains the time continuity of time-driven effects across segments and machines at the engine level. Parts of one shot stay on the same timeline. Assigning different frame ranges alone does not provide this capability.
+- **Engine-Level Temporal Lock** maintains timing continuity for time-driven effects across segments and machines at the engine level. Parts of one shot stay on the same timeline. Assigning different frame ranges alone does not provide this capability.
 - **Multi-Machine Rendering**, available through **TrueODS Distributed > Multi-Machine Rendering**, provides automatic configuration checks, frame-range allocation, and output completeness checks. It reduces repetitive task preparation on each machine. Users deploy the project and start or resume work on each machine.
 
 The two editions share the same core image capabilities. See [Editions and Workflow](EDITIONS.md#english) for a comparison and steps.
@@ -132,7 +132,7 @@ The two editions share the same core image capabilities. See [Editions and Workf
 
 Not guaranteed. Temporal Lock addresses **engine-time continuity**. Unbaked simulations, random or externally driven effects, and lighting or effects that need several frames to settle may still require caches, repeatable settings, and warm-up. If the sequence has a Time Dilation track, time continuity is guaranteed only for segments that start before its first key; for a multi-machine job, enter that key's frame number in **Frames no part may start at** under **Advanced** in the **TrueODS Multi-Machine** panel (empty by default).
 
-Use matching project content, engine, and plugin versions on the machines, preferably with the same GPU family and memory, run the configuration check, and test actual joins. Determine warm-up from scene tests. A configuration check does not certify that every simulation state matches or replace visual inspection of joins.
+Use matching project content, engine versions, and plugin versions on all machines, preferably with GPUs from the same family and with the same amount of video memory. Run the configuration check and test the actual joins. Determine warm-up from scene tests. A configuration check does not certify that every simulation state matches or replace visual inspection of joins.
 
 ### How does seamless volumetric fog differ from Temporal Lock in TrueODS Distributed?
 

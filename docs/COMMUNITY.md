@@ -69,9 +69,9 @@ Do not post identity documents, phone numbers, Epic passwords, verification code
 
 ### Group announcement
 
-Welcome to the TRUEODS Telegram support group. This group is for installation and usage questions, release notices and optional artwork sharing. The technical-support address is **trueodssupport@gmail.com**. Logs, original frames and projects belong in private support, not in the chat.
+Welcome to the TRUEODS Telegram support group. This group is for installation and usage questions, release notices and optional artwork sharing. The technical-support address is **trueodssupport@gmail.com**. Send logs, original frames and projects by private email; do not post them in the group chat.
 
-Include the plugin and UE versions, GPU, output settings and reproduction steps when reporting a problem. Technical issues are followed up on the basis of reproducible reports; a chat message is not automatically a tracked support case or a promised fix date. Release notes are authoritative for shipped releases and known limitations; experimental ideas discussed in the group are not feature commitments.
+Include the plugin and UE versions, GPU, output settings and reproduction steps when reporting a problem. We follow up on technical issues using reproducible reports. A chat message does not automatically open a support case or commit us to a fix date. Release notes are authoritative for shipped releases and known limitations; experimental ideas discussed in the group are not feature commitments.
 
 ### Group rules
 
