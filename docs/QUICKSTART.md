@@ -37,7 +37,6 @@
 以下几处与默认值无关，图注里也会说明：
 
 - **Manual EV100** 和 **Exposure Reference** 显示的是截图场景当时读到的曝光，每个场景都不同；
-- **DLAA Status** 显示 Ready，是因为截图的电脑装了 NVIDIA DLSS 插件；没装时显示的是另一段文字（见第 7 节）；
 - 设置列表里 True ODS Panoramic 那一行末尾的黄色三角，是截图工程自身的光追设置触发的 MRQ 提示（见第 2 节图注）。
 
 适用范围：Unreal Engine 5.7 与 5.8，Windows 64 位编辑器，DX12 / SM6，Movie Render Queue（MRQ）。基础版和分布式渲染版使用同一套流程，分布式渲染版多出的部分见第 7 节。
@@ -305,18 +304,13 @@ MRQ Output 里提前的那 64 帧，就是为第 2、3 种预留的。
 
 *图：Anti-Aliasing 区和 Rendering 区，均为默认值。*
 
-- *DLAA Status 显示 Ready，是因为截图的电脑装了 NVIDIA DLSS 插件。*
 - *Anti-Aliasing 区的 Advanced 是折叠的，展开后只有 Near Clip Distance (cm) 一项；Rendering 区的 Advanced 在截图里是展开的。*
 
-- **Anti-Aliasing Method**（默认 **Standard (recommended)**，只在 Renderer 为 Deferred 时出现）：
-    - **Standard**：高光和间接光稳定，画面与视口一致；
-    - **Alternative**：稍微多一点噪点，偶尔对快速运动更友好；
-    - **DLAA**：需要安装经过验证的 NVIDIA DLSS 插件，没有时这一项是灰的，鼠标悬停可以看到原因；
+- **Anti-Aliasing Method**（默认 **TSR (recommended)**，只在 Renderer 为 Deferred 时出现）：
+    - **TSR**：高光和间接光稳定，画面与视口一致；
+    - **TAA**：稍微多一点噪点，偶尔对快速运动更友好；
     - **Off**：最快，但高光和间接光会在帧与帧之间闪烁。
 
-    已经选了 DLAA 却没有可用的 DLSS 时，渲染会自动改用 Standard，并只在日志里留一条警告。
-
-- **DLAA Status**（只读）：显示 DLAA 当前能不能用，以及不能用的原因。
 - **Full Quality On Every Frame**（默认开，只在 Deferred 时出现）：让每一帧都达到第一帧的完整质量。Samples Per Pane 为 2 或以上时，这会多花一些时间。关掉后第一帧之后的帧会快一些，但体积雾灯光附近可能出现方形光晕。
 - **Advanced > Near Clip Distance (cm)**（默认 0）：离相机多近的东西仍然会被画出来。0 表示几乎全部保留（实际按 1 cm 处理），几乎所有镜头都适用。只有贴着镜头的物体（例如肩膀、镜头前的道具）需要从全景里去掉时才调大。
 
@@ -335,7 +329,7 @@ MRQ Output 里提前的那 64 帧，就是为第 2、3 种预留的。
     - Warm Up Before First Frame，以及它下面的 Warm Up Frames / Warm Up Sparse Stride / Warm Up Full Frames；
     - Anti-Aliasing Method、Full Quality On Every Frame、HDR Tone Chain。
 
-    Warm Up From Sequence Start、Sequence Efficiency 和 DLAA Status 仍然显示。同时会出现两项新设置：
+    Warm Up From Sequence Start 和 Sequence Efficiency 仍然显示。同时会出现两项新设置：
 
     - **Path Tracing Samples Per Pane**（默认 64）：采样数越多，噪点越少，时间大致按比例增加；
     - **Path Tracing Denoiser**（默认 Project）：是否降噪。
@@ -538,9 +532,13 @@ MRQ Output 里提前的那 64 帧，就是为第 2、3 种预留的。
         - X 越大，衔接越平滑；X 最多等于第 N 帧之前连续已完成的帧数。
         - 代价：多渲 X 帧。缺失的帧后面还有已完成的帧时，接回去的地方也会同样混合 X 帧，共约 2X 帧。提示里会给出多渲的帧数，以及按那次渲染的每帧耗时估算的时间。
         - 混合前的原帧保存在输出文件夹的 `_resume_originals` 里。
+        - 只写了 16 位 TIFF、没有 EXR 母版的帧不能混合，这一项是灰的。
 
     - **Continue at frame N without rendering earlier frames again (warm-up only)**：不多渲任何帧，直接从第 N 帧开始渲。
         - 风险：第 N 帧没有前面帧的积累，光照、雾和反射在第 N−1 帧到第 N 帧之间可能出现肉眼可见的跳变。缺失的帧后面还有已完成的帧时，接回去的地方也可能跳。
+
+    - **Render every frame again (the scene changed)**：关卡、子关卡或序列在这些帧渲完之后存过盘时才出现，提示里会写明是哪个文件。整个范围重新渲一遍，替换已完成的帧；提示里会给出按那次渲染的每帧耗时估算的时间。
+        - 场景确实改过时选它，否则已完成的帧和新渲的帧对不上。只是存了盘、没改内容时可以不理会，照常选上面两项之一。
 
     - 使用 Path Tracing 时没有这个选择，直接从第一个缺失帧继续。
 
@@ -552,7 +550,7 @@ MRQ Output 里提前的那 64 帧，就是为第 2、3 种预留的。
 
 **注意**：
 
-- 续渲前不要改动序列和场景内容。插件会逐帧核对设置记录，记录不一致的帧会重新渲染。
+- 续渲前不要改动序列和场景内容。插件会逐帧核对设置记录，记录不一致的帧会重新渲染。关卡、子关卡和序列只看这些帧渲完之后有没有存过盘（见上面第三个选项）；材质、贴图等其他资产不核对，没保存的改动也看不到。
 - 不要删除已经写出的帧，也不要删除输出文件夹里的 `_metadata`（里面有进度记录、逐帧记录和这次任务的设置副本）。
 - 旧版本插件渲染的输出没有设置副本：提示会写明“settings were not kept”，Resume Render 会使用设置窗口里当前的设置。这时设置必须与当时完全一致（例如从当时存的预设导入），否则不一致的帧会重新渲染。
 
@@ -593,16 +591,7 @@ MRQ Output 里提前的那 64 帧，就是为第 2、3 种预留的。
 
 **UE 5.7 与 UE 5.8**
 
-- **同一份源码**：两个引擎版本使用同一份插件源码，插件面板和使用流程相同；Fab 为每个引擎版本提供单独的安装包。对照 UE 5.7 和 UE 5.8 的插件面板，除分布式渲染版独有的 Multi-Machine Rendering 区和下面的 DLAA 状态外，各区的参数和顺序一致。
-- **DLAA**：插件按 DLSS 插件的版本号判断能不能用，目前只验证过 UE 5.7 上的 8.4 版。
-    - UE 5.8 上没装 DLSS 插件时，DLAA 是灰的，DLAA Status 显示下图的安装说明；
-    - 装了版本号不是 8.4 的 DLSS 插件时，DLAA Status 会提示该版本未经验证（“has not been verified … DLAA stays off”），DLAA 仍然是灰的；
-    - 其他抗锯齿方式不受影响。
-
-    [![UE 5.8：没装 DLSS 插件时的 Anti-Aliasing 区](../media/guide/qs-antialiasing-ue58-no-dlss.png)](../media/guide/qs-antialiasing-ue58-no-dlss.png)
-
-    *图：UE 5.8 上没装 NVIDIA DLSS 插件时，DLAA Status 显示的通用安装说明。默认使用 Standard 抗锯齿，不需要额外安装任何东西。*
-
+- **同一份源码**：两个引擎版本使用同一份插件源码，插件面板和使用流程相同；Fab 为每个引擎版本提供单独的安装包。对照 UE 5.7 和 UE 5.8 的插件面板，除分布式渲染版独有的 Multi-Machine Rendering 区外，各区的参数和顺序一致。
 - **Film > Method = Standard ACES**：这个选项只有 UE 5.8 才有，插件的 HDR 色调处理不读取它。
     - 如果工程在 5.8 里使用 Standard ACES，PNG / JPG / TIFF 的颜色可能与视口不一致；
     - EXR 线性母版不受影响。遇到这种情况，请以 EXR 为准，在调色软件里转换。
@@ -644,7 +633,6 @@ This page follows the order you actually work in. The main path is:
 Exceptions (the captions repeat them):
 
 - **Manual EV100** and **Exposure Reference** show the exposure read from the captured scene. It differs from scene to scene.
-- **DLAA Status** shows Ready because the capture machine has the NVIDIA DLSS plugin installed. Without it, the row shows a different text (see section 7).
 - The yellow triangle at the end of the True ODS Panoramic row in the settings list is an MRQ notice caused by the capture project's own ray-tracing settings (see the caption in section 2).
 
 Scope: Unreal Engine 5.7 and 5.8, the Windows 64-bit editor, DX12 / SM6, and Movie Render Queue (MRQ). The base edition and TrueODS Distributed share this workflow. Section 7 lists what TrueODS Distributed adds.
@@ -922,18 +910,13 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
 
 *Anti-Aliasing and Rendering, at their defaults.*
 
-- *DLAA Status shows Ready because the capture machine has the NVIDIA DLSS plugin installed.*
 - *The Anti-Aliasing Advanced group is collapsed and holds only Near Clip Distance (cm). The Advanced group of Rendering is expanded in this capture.*
 
-- **Anti-Aliasing Method** (default **Standard (recommended)**; shown only with the Deferred renderer):
-    - **Standard**: steady highlights and indirect light, matching the viewport.
-    - **Alternative**: a little noisier, occasionally kinder to fast movement.
-    - **DLAA**: needs a verified NVIDIA DLSS plugin. Without one it is greyed out, and hovering shows why.
+- **Anti-Aliasing Method** (default **TSR (recommended)**; shown only with the Deferred renderer):
+    - **TSR**: steady highlights and indirect light, matching the viewport.
+    - **TAA**: a little noisier, occasionally kinder to fast movement.
     - **Off**: fastest, but highlights and indirect light shimmer from frame to frame.
 
-    A job set to DLAA without DLSS available renders with Standard and leaves only a warning in the log.
-
-- **DLAA Status** (read-only): whether DLAA can be used, and why not.
 - **Full Quality On Every Frame** (default on; Deferred only): gives every frame the full quality of the first. It costs extra time when Samples Per Pane is 2 or more. Off makes later frames faster but can show a square glow near volumetric-fog lights.
 - **Advanced > Near Clip Distance (cm)** (default 0): how close to the camera something can be and still be drawn. 0 keeps almost everything (it is treated as 1 cm) and is right for almost every shot. Raise it only to leave out something touching the lens, such as a shoulder or a prop.
 
@@ -952,7 +935,7 @@ The parameters below follow the plugin panel from top to bottom. Each entry says
     - Warm Up Before First Frame, with its Warm Up Frames / Warm Up Sparse Stride / Warm Up Full Frames rows;
     - Anti-Aliasing Method, Full Quality On Every Frame and HDR Tone Chain.
 
-    Warm Up From Sequence Start, Sequence Efficiency and DLAA Status stay. Two new rows appear:
+    Warm Up From Sequence Start and Sequence Efficiency stay. Two new rows appear:
 
     - **Path Tracing Samples Per Pane** (default 64): more samples, less grain; time grows roughly in proportion.
     - **Path Tracing Denoiser** (default Project): whether to denoise.
@@ -1158,9 +1141,13 @@ If a render stops part-way (the process was closed, the power went, a frame fail
         - A larger X joins more smoothly. X can be at most the number of finished frames directly before frame N.
         - Cost: X extra frames. If finished frames follow the missing ones, the frames where they start are blended back the same way, about 2X frames in all. The notice shows the extra frames and an estimate from that render's time per frame.
         - The frames as they were before blending are kept in `_resume_originals` in the output folder.
+        - Frames written only as 16-bit TIFF, without the EXR master, cannot be blended; this choice is then unavailable.
 
     - **Continue at frame N without rendering earlier frames again (warm-up only):** renders no extra frames and starts at frame N.
         - Risk: frame N starts without the frames before it, so lighting, fog and reflections can change visibly from frame N−1 to frame N. If finished frames follow the missing ones, the same can happen where they start.
+
+    - **Render every frame again (the scene changed):** shown only when the level, one of its sublevels or the sequence was saved after the frames were rendered; the notice names the file. Renders the whole range again and replaces the frames already done; the notice gives an estimate from that render's time per frame.
+        - Choose it when the scene did change; otherwise the frames already done would not match the new ones. A save without changes can be ignored: choose one of the two choices above as usual.
 
     - With Path Tracing there is no choice; the render continues at the first missing frame.
 
@@ -1172,7 +1159,7 @@ If a render stops part-way (the process was closed, the power went, a frame fail
 
 **Notes:**
 
-- Before resuming, do not change the sequence or the scene. The plugin checks each frame's settings record; frames whose record does not match are rendered again.
+- Before resuming, do not change the sequence or the scene. The plugin checks each frame's settings record; frames whose record does not match are rendered again. For the level, its sublevels and the sequence it only checks whether they were saved after the frames (the third choice above); other assets such as materials and textures are not checked, and neither are unsaved changes.
 - Do not delete frames already written, or the `_metadata` folder inside the output folder (it holds the progress record, the per-frame records and the copy of the job's settings).
 - Output from older plugin versions has no copy of the settings: the notice says "settings were not kept", and Resume Render uses the settings in the settings window. They must then match that render exactly (for example imported from the preset saved then); frames that do not match are rendered again.
 
@@ -1213,16 +1200,7 @@ If a render stops part-way (the process was closed, the power went, a frame fail
 
 **UE 5.7 and UE 5.8**
 
-- **Same source:** both engine versions are built from the same plugin source, and the plugin panel and the workflow are the same. Fab provides a separate package for each engine version. Apart from TrueODS Distributed's Multi-Machine Rendering section and the DLAA status below, the UE 5.7 and UE 5.8 plugin panels have the same parameters in the same order.
-- **DLAA:** the plugin decides by the DLSS plugin's version number; so far only version 8.4, on UE 5.7, has been verified.
-    - On UE 5.8 without a DLSS plugin, DLAA is greyed out and DLAA Status shows the install note below.
-    - With a DLSS plugin whose version is not 8.4, DLAA Status says the version has not been verified ("has not been verified … DLAA stays off"), and DLAA stays greyed out.
-    - The other anti-aliasing methods are unaffected.
-
-    [![UE 5.8: the Anti-Aliasing section without a DLSS plugin](../media/guide/qs-antialiasing-ue58-no-dlss.png)](../media/guide/qs-antialiasing-ue58-no-dlss.png)
-
-    *UE 5.8 without the NVIDIA DLSS plugin: DLAA Status shows a generic install note. Standard anti-aliasing is used by default, and nothing extra needs to be installed.*
-
+- **Same source:** both engine versions are built from the same plugin source, and the plugin panel and the workflow are the same. Fab provides a separate package for each engine version. Apart from TrueODS Distributed's Multi-Machine Rendering section, the UE 5.7 and UE 5.8 plugin panels have the same parameters in the same order.
 - **Film > Method = Standard ACES:** this option exists only in UE 5.8, and the plugin's HDR tone processing does not read it.
     - If a 5.8 project uses Standard ACES, PNG / JPG / TIFF colours can differ from the viewport.
     - The linear EXR master is unaffected. Work from the EXR and convert it in your grading application.

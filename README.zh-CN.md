@@ -1,7 +1,7 @@
 ﻿![TRUEODS — 水晶双环主视觉](media/brand/trueods-v24.png)
 
 # TRUEODS
-### 360° 立体全景，每个方向都有纵深。
+### 360° 立体全景，每个方向都有正确立体视差
 
 [English](README.md) · **简体中文**
 
@@ -15,7 +15,7 @@
 
 | 能力 | 解决什么问题 |
 | :--- | :--- |
-| **Lumen 下的正确双眼视差** | 以往在 UE 中用 Lumen 渲染 360° 立体全景，很难让每个方向的双眼视差都正确。TRUEODS 解决了这一点：环顾四周时，物体的纵深与尺度都真实可信。支持 360° ODS、VR180 及上下、左右双眼排列。 |
+| **Lumen 下的正确立体视差** | 以往在 UE 中用 Lumen 渲染 360° 立体全景，很难让每个方向的立体视差都正确。TRUEODS 解决了这一点：环顾四周时，物体的纵深与尺度都真实可信。支持 360° ODS、VR180 及上下、左右双眼排列。 |
 | **分钟级 8K 双眼渲染** | 单张显卡即可在分钟级完成一帧 8K 双眼 360° 立体画面，让高分辨率输出进入日常制作流程。 |
 | **360° 无缝体积雾** | 室内外的体积雾与体积光在整个 360° 全景中连续呈现，看不到拼接痕迹，也没有方向交界处的明暗跳变、条纹等渲染瑕疵。 |
 | **线性 HDR 母版** | 输出 16 位半浮点 EXR 序列，用于调色与合成，同时可生成 PNG、JPG 或 16 位 TIFF 审片图。 |
@@ -28,7 +28,7 @@
 
 <sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub>
 
-**[下载咖啡厅视频（MP4 · 341.0 MB）](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee_sample.mp4)** — 8192 × 8192 上下双眼、30 fps、约 20 秒；HEVC/H.265 视频，附 48 kHz 双声道 AAC 音轨。
+**[下载咖啡厅视频（MP4 · 341.0 MB）](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee_sample.mp4)** — 8192 × 8192 上下双眼、30 fps、约 20 秒；HEVC/H.265 视频。
 
 请使用支持 8K HEVC 的 360° 播放器，手动选择 **360° 等距柱状投影 / Top/Bottom（上下双眼）**。视频未内嵌 VR 投影或双眼布局元数据。
 
@@ -38,18 +38,18 @@
 
 ## 看实际效果
 
-动图在左眼与右眼之间切换，用平面屏幕展示双眼视差。最终立体全景需要在兼容的播放器与头显中观看。
+动图在左眼与右眼之间切换，用平面屏幕展示立体视差。最终立体全景需要在兼容的播放器与头显中观看。
 
-### 环顾四周，都有正确的左右视差
+### 每个方向都有正确立体视差
 
-![内景 — 左右眼交替展示双眼视差](media/showcase/interior-stereo.webp)
+![内景 — 左右眼交替展示立体视差](media/showcase/interior-stereo.webp)
 
 [JPG · 26.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee01_00108409.jpg) · [PNG 原图 · 295.8 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee01_00108409.png)
 
 <sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub>
 
 <!-- TRUEODS-PERF -->
-单帧 8K 双眼渲染时间：**RTX 5090 约 47 秒 · RTX 4090 约 56 秒**（Unreal Engine 5.7、开启 DLAA 实测）
+单帧 8K 双眼渲染时间：**RTX 5090 约 48 秒 · RTX 4090 约 59 秒**（Unreal Engine 5.7 实测）
 <!-- /TRUEODS-PERF -->
 
 近处与远处的物体呈现不同幅度的位移，立体纵深延续到观看位置的四周。
@@ -63,15 +63,15 @@
 <sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub>
 
 <!-- TRUEODS-PERF -->
-单帧 8K 双眼渲染时间：**RTX 5090 约 42 秒 · RTX 4090 约 54 秒**（Unreal Engine 5.7、开启 DLAA 实测）
+单帧 8K 双眼渲染时间：**RTX 5090 约 44 秒 · RTX 4090 约 56 秒**（Unreal Engine 5.7 实测）
 <!-- /TRUEODS-PERF -->
 
 高分辨率内景中的灯光、表面细节与近处物体。此处展示的是双眼输出的缩小预览。
 
 <!-- TRUEODS-PERF -->
-**计时方法：** Unreal Engine 5.7、开启 DLAA，每眼 8192 × 4096、150% 超采样、Paced 显存模式，两台机器使用同一插件版本和同一套设置（RTX 5090 + i9-13900KF，RTX 4090 + i7-13700KF）。每个时间取连续写出 11 帧之间 10 个帧间隔的平均，含拼接与输出保存，不含工程启动与预热。测试帧与预览来自同一场景，但不是同一帧。实际耗时随场景、设置及硬件变化。
+**计时方法：** Unreal Engine 5.7、默认的 TSR 抗锯齿，每眼 8192 × 4096、150% 超采样、Paced 显存模式，两台机器使用同一插件版本和同一套设置（RTX 5090 + i9-13900KF，RTX 4090 + i7-13700KF）。每个时间取连续写出 11 帧之间 10 个帧间隔的平均，含拼接与输出保存，不含工程启动与预热。测试帧与预览来自同一场景，但不是同一帧。实际耗时随场景、设置及硬件变化。
 
-**重场景参考：** 一个因保密不能展示画面的项目，场景更重，在 Unreal Engine 5.7 上使用 TSR（不是 DLAA），其余设置同上。两台机器用同一套设置渲染同一批连续 6 帧（取其间 5 个帧间隔的平均）：单帧 8K 双眼 **RTX 5090 约 234 秒 · RTX 4090 约 304 秒**。
+**重场景参考：** 一个因保密不能展示画面的项目，场景更重，在 Unreal Engine 5.7 上渲染，设置同上。两台机器用同一套设置渲染同一批连续 6 帧（取其间 5 个帧间隔的平均）：单帧 8K 双眼 **RTX 5090 约 234 秒 · RTX 4090 约 304 秒**。
 <!-- /TRUEODS-PERF -->
 
 ### 360° 无缝体积效果，覆盖内景与外景
@@ -127,7 +127,7 @@
 | 售后群 | [申请加入 Telegram 售后群](docs/COMMUNITY.md) · 邮件发送订单凭证，回复获取邀请链接 |
 | 上线状态与更新 | [发行状态](docs/CHANGELOG.md) |
 
-此仓库用于公开产品说明与示例，插件包另行分发。演示中的场景、角色及其他第三方资产不包含在插件内。插件涉及的第三方软件声明（OpenEXR、Imath 等引擎库，源自 ACES 与引擎色调曲线的代码，以及可选的 NVIDIA DLSS 插件）见插件包根目录的 `THIRD_PARTY_NOTICES.txt`。
+此仓库用于公开产品说明与示例，插件包另行分发。演示中的场景、角色及其他第三方资产不包含在插件内。插件涉及的第三方软件声明（OpenEXR、Imath 等引擎库，以及源自 ACES 与引擎色调曲线的代码）见插件包根目录的 `THIRD_PARTY_NOTICES.txt`。
 
 <details>
 <summary>环境资产致谢</summary>

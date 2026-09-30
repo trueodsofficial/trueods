@@ -1,7 +1,7 @@
 ﻿![TRUEODS — crystal double-loop identity](media/brand/trueods-v24.png)
 
 # TRUEODS
-### 360° stereo with depth in every direction.
+### 360° stereo panoramas with correct stereo parallax in every direction
 
 **English** · [简体中文](README.zh-CN.md)
 
@@ -15,7 +15,7 @@ High-resolution **360° ODS and VR180 rendering for Unreal Engine**. Create ster
 
 | Capability | What it gives you |
 | :--- | :--- |
-| **Correct parallax with Lumen** | With Lumen, 360° stereo renders in Unreal Engine have struggled to keep binocular parallax correct in every direction. TRUEODS gets it right: depth and scale hold wherever you look. Render 360° ODS or VR180, with top/bottom or side-by-side stereo layouts. |
+| **Correct stereo parallax with Lumen** | With Lumen, 360° stereo renders in Unreal Engine have struggled to keep stereo parallax correct in every direction. TRUEODS gets it right: depth and scale hold wherever you look. Render 360° ODS or VR180, with top/bottom or side-by-side stereo layouts. |
 | **8K stereo in minutes** | One GPU renders a complete 8K left/right-eye 360° stereo frame in minutes, so high-resolution output fits everyday production. |
 | **Seamless 360° volumetric fog** | Volumetric fog and light stay continuous across the full 360° panorama, indoors and outdoors: no stitching seams, and no brightness jumps, banding or other artifacts where view directions meet. |
 | **Linear HDR masters** | 16-bit half-float EXR sequences for grading and compositing, alongside PNG, JPG or 16-bit TIFF review output. |
@@ -28,7 +28,7 @@ High-resolution **360° ODS and VR180 rendering for Unreal Engine**. Create ster
 
 <sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub>
 
-**[Download the coffee-shop video (MP4 · 341.0 MB)](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee_sample.mp4)** — 8192 × 8192 Top/Bottom stereo, 30 fps, about 20 seconds; HEVC/H.265 video with 48 kHz stereo AAC audio.
+**[Download the coffee-shop video (MP4 · 341.0 MB)](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee_sample.mp4)** — 8192 × 8192 Top/Bottom stereo, 30 fps, about 20 seconds; HEVC/H.265 video.
 
 Use a 360° player that supports 8K HEVC and manually select **360° equirectangular / Top/Bottom stereo**. The video does not contain embedded VR projection or stereo metadata.
 
@@ -40,7 +40,7 @@ Use a 360° player that supports 8K HEVC and manually select **360° equirectang
 
 The previews alternate between the left and right eye. They show stereo parallax on a flat screen; use a compatible headset and player to view the final stereo panorama.
 
-### Correct left/right-eye parallax in every direction
+### Correct stereo parallax in every direction
 
 ![Interior — alternating left and right eye](media/showcase/interior-stereo.webp)
 
@@ -49,7 +49,7 @@ The previews alternate between the left and right eye. They show stereo parallax
 <sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub>
 
 <!-- TRUEODS-PERF -->
-Render time per 8K stereo frame (both eyes): **RTX 5090 ~47 s · RTX 4090 ~56 s** · measured on Unreal Engine 5.7 with DLAA
+Render time per 8K stereo frame (both eyes): **RTX 5090 ~48 s · RTX 4090 ~59 s** · measured on Unreal Engine 5.7
 <!-- /TRUEODS-PERF -->
 
 Near and distant objects shift by different amounts. Stereo depth extends around the viewing position.
@@ -63,15 +63,15 @@ Near and distant objects shift by different amounts. Stereo depth extends around
 <sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub>
 
 <!-- TRUEODS-PERF -->
-Render time per 8K stereo frame (both eyes): **RTX 5090 ~42 s · RTX 4090 ~54 s** · measured on Unreal Engine 5.7 with DLAA
+Render time per 8K stereo frame (both eyes): **RTX 5090 ~44 s · RTX 4090 ~56 s** · measured on Unreal Engine 5.7
 <!-- /TRUEODS-PERF -->
 
 Fine lighting, surfaces and near-field objects in a high-resolution interior. This is a reduced preview of the stereo output.
 
 <!-- TRUEODS-PERF -->
-**How the times were measured:** Unreal Engine 5.7 with DLAA, 8192 × 4096 per eye, 150% supersampling, Paced memory mode, the same plugin version and settings on both machines (RTX 5090 + i9-13900KF, RTX 4090 + i7-13700KF). Each time is the average of the 10 intervals between 11 consecutive written frames, including stitching and output saving, excluding project startup and warm-up. The timed frames come from the same scenes as the previews but are not the frames shown. Actual times vary with scene, settings and hardware.
+**How the times were measured:** Unreal Engine 5.7 with the default TSR anti-aliasing, 8192 × 4096 per eye, 150% supersampling, Paced memory mode, the same plugin version and settings on both machines (RTX 5090 + i9-13900KF, RTX 4090 + i7-13700KF). Each time is the average of the 10 intervals between 11 consecutive written frames, including stitching and output saving, excluding project startup and warm-up. The timed frames come from the same scenes as the previews but are not the frames shown. Actual times vary with scene, settings and hardware.
 
-**Heavy-scene reference:** a confidential project whose images cannot be shown; a heavier scene rendered on Unreal Engine 5.7 with TSR (not DLAA), other settings as above. Both machines rendered the same 6 consecutive frames with the same settings (average of the 5 intervals between them): **RTX 5090 ~234 s · RTX 4090 ~304 s** per 8K stereo frame.
+**Heavy-scene reference:** a confidential project whose images cannot be shown; a heavier scene rendered on Unreal Engine 5.7, settings as above. Both machines rendered the same 6 consecutive frames with the same settings (average of the 5 intervals between them): **RTX 5090 ~234 s · RTX 4090 ~304 s** per 8K stereo frame.
 <!-- /TRUEODS-PERF -->
 
 ### Seamless 360° volumetrics — interiors and exteriors
@@ -127,7 +127,7 @@ Unbaked simulations, random or externally driven effects, and lighting or effect
 | Support group | [Request to join the Telegram support group](docs/COMMUNITY.md#english) · Email proof of purchase; receive an invitation link by reply |
 | Availability and updates | [Release status](docs/CHANGELOG.md#english) |
 
-This repository contains public product documentation and examples. Plugin packages are distributed separately. Demonstration scenes, characters and other third-party assets are not included with the plugin. Third-party software notices for the plugin (engine libraries such as OpenEXR and Imath, code derived from ACES and the engine's tone curve, and the optional NVIDIA DLSS plugin) are in `THIRD_PARTY_NOTICES.txt` at the root of the plugin package.
+This repository contains public product documentation and examples. Plugin packages are distributed separately. Demonstration scenes, characters and other third-party assets are not included with the plugin. Third-party software notices for the plugin (engine libraries such as OpenEXR and Imath, and code derived from ACES and the engine's tone curve) are in `THIRD_PARTY_NOTICES.txt` at the root of the plugin package.
 
 <details>
 <summary>Environment credits</summary>

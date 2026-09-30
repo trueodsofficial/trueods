@@ -12,7 +12,7 @@ TRUEODS 正在准备 Fab 首发。正式商品链接会在[产品主页](../READ
 
 ### ODS 是什么？
 
-**ODS = Omnidirectional Stereo（全向立体）**，用于生成具有正确双眼视差的 360° 立体全景。使用支持对应立体布局的播放器与 VR 头显，才能正确观看。它支持转头环视；自由移动观看位置的 6DoF 体积视频是另一种交付形式。
+**ODS = Omnidirectional Stereo（全向立体）**，用于生成具有正确立体视差的 360° 立体全景。使用支持对应立体布局的播放器与 VR 头显，才能正确观看。它支持转头环视；自由移动观看位置的 6DoF 体积视频是另一种交付形式。
 
 ### 8K 是每眼 8192 × 8192 吗？
 
@@ -33,7 +33,7 @@ TRUEODS 正在准备 Fab 首发。正式商品链接会在[产品主页](../READ
 
 **能。基础版和分布式渲染版都有续渲功能**。单机续渲入口位于 **True ODS Panoramic > Output**，选择原输出文件夹后，续渲提示和 **Resume Render** 按钮会出现在文件夹下方。新版会恢复原任务保存的关卡、序列与渲染设置；旧版本输出若没有保存任务设置，则使用当前窗口设置，需要自行核对。保留图像、逐帧记录及 `_metadata` 文件夹。
 
-每次可以选择“重渲并混合中断前的 X 帧”或“直接从缺失帧继续，仅预热”。前者增加渲染时间以平滑接点；后者不重渲之前的帧，但光照、雾或反射可能跳变。Path Tracing 直接从首个缺失帧继续。按钮会启动整个队列，因此只想续渲单个任务时应让队列只保留该任务。完整说明见[快速上手](QUICKSTART.md)。
+每次可以选择“重渲并混合中断前的 X 帧”或“直接从缺失帧继续，仅预热”。前者增加渲染时间以平滑接点；后者不重渲之前的帧，但光照、雾或反射可能跳变。只写了 16 位 TIFF、没有 EXR 母版的帧不能混合，前一种不可选。关卡、子关卡或序列在这些帧渲完之后存过盘时，提示会写明，并多出第三种“全部重渲”（**Render every frame again**）：场景确实改过时选它，只是存了盘、没改内容可以不理会。Path Tracing 直接从首个缺失帧继续。按钮会启动整个队列，因此只想续渲单个任务时应让队列只保留该任务。完整说明见[快速上手](QUICKSTART.md)。
 
 分布式渲染版的多机任务仍使用 **TrueODS Multi-Machine** 面板第 4 步的 **Resume Render Job**；默认接点重渲范围由该步骤的 **Handle frames** 控制，详见[多机工作流](EDITIONS.md)。
 
@@ -72,10 +72,6 @@ EXR 与 PNG 外观不同，通常需要先检查读取软件的线性输入解�
 
 使用第三方材质、毛发、水面、粒子或其他特殊效果时，先做短测试。真实视差、遮挡与视角相关反射本来就可能使左右眼不同；两眼完全相同不是立体正确的判断标准。
 
-### DLAA 需要什么？在 UE 5.8 上能用吗？
-
-**DLAA 是可选的抗锯齿方式**，在 **True ODS Panoramic > Anti-Aliasing > Anti-Aliasing Method** 中选择。它需要 NVIDIA RTX 显卡，以及与引擎版本对应、并经 TrueODS 验证的 NVIDIA DLSS 插件：目前为 UE 5.7 上的 DLSS 8.4.x。UE 5.8 暂无经验证的 DLSS 插件，因此在 5.8 上 DLAA 显示为灰色，TrueODS 使用 TSR，即默认的 **Standard (recommended)**。其余功能都不需要 DLSS。该选项下方的 **DLAA Status** 一行会说明本机的情况。
-
 ### 为什么 UE 5.8 项目的 PNG 审片图和视口颜色不一样？
 
 这是当前的已知限制。UE 5.8 在 **Post Process > Film** 中新增了 **Method**（Filmic / Standard ACES）。TrueODS 的 PNG / JPG / TIFF 审片图始终使用引擎默认的 Filmic 色调曲线，所以项目设为 Standard ACES 时，审片图与视口不一致。**EXR 母版不受影响**。需要审片图与视口一致时请使用 Filmic；调色请以 EXR 母版为准。
@@ -84,7 +80,7 @@ EXR 与 PNG 外观不同，通常需要先检查读取软件的线性输入解�
 
 没有适用于全部场景的固定秒数或显存门槛。分辨率、采样、超采样、场景、特效、硬件与后台负载都会影响速度和资源需求。
 
-先按[快速上手](QUICKSTART.md)渲染单帧，再测试 8K 的普通帧与最重帧。**VRAM Mode** 可调整内存与耗时的取舍；它不保证整机内存或速度的固定比例。公布的测试数据需要结合其硬件、场景类别、设置和测量范围阅读；公布的渲染耗时均在 Unreal Engine 5.7 上、开启 DLAA 测得。
+先按[快速上手](QUICKSTART.md)渲染单帧，再测试 8K 的普通帧与最重帧。**VRAM Mode** 可调整内存与耗时的取舍；它不保证整机内存或速度的固定比例。公布的测试数据需要结合其硬件、场景类别、设置和测量范围阅读；公布的渲染耗时均在 Unreal Engine 5.7 上、使用默认的 TSR 抗锯齿测得。
 
 ### TrueODS 基础版 / 分布式渲染版与 Fab Personal / Professional 是一回事吗？
 
@@ -100,7 +96,7 @@ TRUEODS is preparing for its Fab launch. The [product home](../README.md) will l
 
 ### What does ODS mean?
 
-**ODS stands for Omnidirectional Stereo**: 360° stereo panoramas with correct binocular parallax. Use a compatible stereo player and VR headset with the matching layout. This supports looking around; freely changing the viewing position in 6DoF volumetric video is a different delivery format.
+**ODS stands for Omnidirectional Stereo**: 360° stereo panoramas with correct stereo parallax. Use a compatible stereo player and VR headset with the matching layout. This supports looking around; freely changing the viewing position in 6DoF volumetric video is a different delivery format.
 
 ### Does 8K mean 8192 × 8192 for each eye?
 
@@ -121,7 +117,7 @@ When **Resolution Preset** is set to a fixed preset (not **Custom (manual)**), s
 
 **Both editions can resume.** For a single machine, choose the original output folder under **True ODS Panoramic > Output**. The notice and **Resume Render** button appear below that folder. The new workflow restores the saved level, sequence, and render settings; older output without saved job settings uses the current window's settings, which you must check. Keep the images, per-frame records, and `_metadata` folder.
 
-Each time, choose to re-render and blend X frames before the gap, or continue at the missing frame with warm-up only. Blending adds render time to smooth the join; direct continuation avoids re-rendering earlier frames but lighting, fog, or reflections may jump. Path Tracing continues directly. The button starts the whole queue, so keep only this job if it is the only one you want to resume. See [Quick Start](QUICKSTART.md#english).
+Each time, choose to re-render and blend X frames before the gap, or continue at the missing frame with warm-up only. Blending adds render time to smooth the join; direct continuation avoids re-rendering earlier frames but lighting, fog, or reflections may jump. Frames written only as 16-bit TIFF, without the EXR master, cannot be blended, so the first choice is unavailable. If the level, a sublevel or the sequence was saved after the frames were rendered, the notice says so and adds a third choice, **Render every frame again**: choose it when the scene did change; a save without changes can be ignored. Path Tracing continues directly. The button starts the whole queue, so keep only this job if it is the only one you want to resume. See [Quick Start](QUICKSTART.md#english).
 
 TrueODS Distributed multi-machine jobs still use **Resume Render Job** in step 4 of **TrueODS Multi-Machine**. The default overlap is controlled by **Handle frames** in that step; see the [multi-machine workflow](EDITIONS.md#english).
 
@@ -160,10 +156,6 @@ The documented workflow covers 360 and 180 (VR180) equirectangular stereo, top/b
 
 Test third-party materials, hair, water, particles, and other special effects on a short sequence first. Real parallax, occlusion, and view-dependent reflections can legitimately differ between eyes; identical images are not the test for correct stereo.
 
-### What does DLAA need? Does it work on UE 5.8?
-
-**DLAA is an optional anti-aliasing method**, selected under **True ODS Panoramic > Anti-Aliasing > Anti-Aliasing Method**. It needs an NVIDIA RTX GPU and NVIDIA's DLSS plugin built for the same engine version and verified by TrueODS: today that is DLSS 8.4.x on UE 5.7. No DLSS plugin is verified for UE 5.8 yet, so on 5.8 DLAA is greyed out and TrueODS uses TSR, the default **Standard (recommended)** method. Everything else works without DLSS. The **DLAA Status** line under the setting says what TrueODS found on your machine.
-
 ### Why does the PNG from a UE 5.8 project look different from the viewport?
 
 This is a known limitation. UE 5.8 adds **Method** (Filmic / Standard ACES) under **Post Process > Film**. The TrueODS PNG / JPG / TIFF viewing image always uses the engine's default Filmic tone curve, so in a project set to Standard ACES the viewing image does not match the viewport. **The EXR master is unaffected.** Use Filmic when the viewing image must match the viewport, and grade from the EXR master.
@@ -172,7 +164,7 @@ This is a known limitation. UE 5.8 adds **Method** (Filmic / Standard ACES) unde
 
 There is no universal time per frame or VRAM threshold. Resolution, sampling, supersampling, scene, effects, hardware, and background load all affect cost.
 
-Follow the [Quick Start](QUICKSTART.md#english), then test ordinary and demanding 8K frames. **VRAM Mode** offers memory/time trade-offs, not fixed ratios for total memory or speed. Read benchmark figures together with their hardware, scene category, settings, and measurement scope. The published render times were measured on Unreal Engine 5.7 with DLAA.
+Follow the [Quick Start](QUICKSTART.md#english), then test ordinary and demanding 8K frames. **VRAM Mode** offers memory/time trade-offs, not fixed ratios for total memory or speed. Read benchmark figures together with their hardware, scene category, settings, and measurement scope. The published render times were measured on Unreal Engine 5.7 with the default TSR anti-aliasing.
 
 ### Are the base TrueODS edition and TrueODS Distributed the same as Fab Personal / Professional?
 

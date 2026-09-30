@@ -46,7 +46,6 @@ Renderer：
 Format / Projection / Stereo Layout：
 Output Width Per Eye / Supersample：
 Samples Per Pane / Anti-Aliasing Method / VRAM Mode：
-使用 DLAA 时的 DLSS 插件版本：
 Image Format / 是否开启 Also Write EXR (HDR master) / EXR Compression：
 曝光方式 / 是否使用 Use Scene Exposure：
 测试帧范围 / 整段还是指定范围：
@@ -117,7 +116,6 @@ Renderer:
 Format / Projection / Stereo Layout:
 Output Width Per Eye / Supersample:
 Samples Per Pane / Anti-Aliasing Method / VRAM Mode:
-DLSS plugin version, if DLAA is used:
 Image Format / Also Write EXR (HDR master) on or off / EXR Compression:
 Exposure mode / Use Scene Exposure used:
 Frame range / whole sequence or custom range:

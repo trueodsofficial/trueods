@@ -14,7 +14,7 @@ TRUEODS 正在准备 Fab 首发。本页介绍版本定位与工作流，正式�
 
 | 卖点 | 带来的结果 | 设置入口 |
 |---|---|---|
-| **正确双眼视差** | 360° 环视时保留立体深度，面向 VR 观看 | MRQ > True ODS Panoramic > Stereo |
+| **正确立体视差** | 360° 环视时保留立体深度，面向 VR 观看 | MRQ > True ODS Panoramic > Stereo |
 | **快速 8K 双眼渲染** | 将高分辨率立体内容用于实际制作，缩短迭代等待；耗时依场景与硬件变化 | Resolution / Supersample / Samples Per Pane / VRAM Mode |
 | **无缝体积雾** | 外景大气和内景光束在全景各方向之间连续衔接 | 同一 True ODS Panoramic 渲染流程；雾与光照在场景内设置 |
 | **线性 HDR 母版** | 输出供后期调色与合成的 EXR，保留高动态范围 | Output > Also Write EXR (HDR master) / EXR Compression |
@@ -66,7 +66,7 @@ TRUEODS 正在准备 Fab 首发。本页介绍版本定位与工作流，正式�
 
 #### 1. 创建任务 · 主机
 
-准备关卡、序列和 MRQ 配置，并在该任务的 **True ODS Panoramic** 设置中打开 **Rendering On Several Machines**；随后显示的 **Consistent Motion Timing** 默认开启，请保持开启。在面板中点击 **Re-read Queue** 读取队列，填写 **Job name**（序列名会自动加在前面；留空则使用序列名加日期），选择 **Whole sequence / Frames** 和 **Machines**，按需填写 **Split (optional)**，确认 **Multi-machine stability**（有默认值），最后点击 **Create Job**。
+准备关卡、序列和 MRQ 配置，并在该任务的 **True ODS Panoramic** 设置中打开 **Rendering On Several Machines**；随后显示的 **Consistent Motion Timing** 默认开启，请保持开启。在面板中点击 **Re-read Queue** 读取队列，填写 **Job name**（序列名会自动加在前面；留空则使用序列名加日期），选择 **Whole sequence / Frames** 和 **Machines**，按需填写 **Split (optional)**，确认 **Multi-machine stability**（有默认值），最后点击 **Create Job**。多机任务每帧输出一张全景图，**Format > Projection** 需为 Equirectangular；选了 Cubemap Faces 时 **Create Job** 会拒绝并说明原因，立方体面请在单机渲染。
 
 [![分布式渲染版创建任务：读取队列、任务名、帧范围、机器数、多机稳定性选项和 Create Job 按钮](../media/guide/distributed-create-job.png)](../media/guide/distributed-create-job.png)
 
@@ -92,7 +92,7 @@ TRUEODS 正在准备 Fab 首发。本页介绍版本定位与工作流，正式�
 
 #### 5. 汇总与验收 · 主机
 
-依面板提示把其他机器的输出复制到主机，点击 **Collect Frames**：它把各机器的帧汇集到一起并列出缺失帧，还会比对每个接点两侧都渲染过的帧；EXR 输出会在接点处做淡入淡出过渡，被替换的原帧保存在收帧目录内的 `dissolve_originals` 文件夹。查看缺帧及收帧报告后，仍要亲自连续播放交界处，检查时间接续、模拟、雾与光照。
+依面板提示把其他机器的输出复制到主机，点击 **Collect Frames**：它把各机器的帧汇集到一起并列出缺失帧，还会比对每个接点两侧都渲染过的帧；收齐全部帧后，EXR 输出会在接点处做淡入淡出过渡（有缺帧时不做，补齐后再点一次 **Collect Frames**），被替换的原帧保存在收帧目录内的 `dissolve_originals` 文件夹。查看缺帧及收帧报告后，仍要亲自连续播放交界处，检查时间接续、模拟、雾与光照。
 
 修改场景、序列或关键设置后，用 **Recreate Job** 重建对应任务，再按第 2 步把工程重新复制到各台机器，并在各机器重做第 3 步检查；保留旧输出，新的结果使用独立目录。预热和缓存按实际镜头测试确定。
 
@@ -110,7 +110,7 @@ TRUEODS is preparing for its Fab launch. This page explains edition positioning 
 
 | Feature | Result | Where to configure |
 |---|---|---|
-| **Correct binocular parallax** | Stereo depth while looking around a 360° panorama for VR | MRQ > True ODS Panoramic > Stereo |
+| **Correct stereo parallax** | Stereo depth while looking around a 360° panorama for VR | MRQ > True ODS Panoramic > Stereo |
 | **Fast 8K stereo rendering** | High-resolution stereo for production with shorter iteration waits; time depends on scene and hardware | Resolution / Supersample / Samples Per Pane / VRAM Mode |
 | **Seamless volumetric fog** | Continuous outdoor atmosphere and indoor light shafts between panorama directions | The same True ODS Panoramic workflow; configure fog and lighting in the scene |
 | **Linear HDR masters** | EXR output retaining high dynamic range for grading and compositing | Output > Also Write EXR (HDR master) / EXR Compression |
@@ -162,7 +162,7 @@ These are cropped captures of the actual interface; click to view the originals.
 
 #### 1. Create the job · Host
 
-Prepare the level, sequence, and MRQ settings. In the job's **True ODS Panoramic** settings, switch on **Rendering On Several Machines**; **Consistent Motion Timing** then appears, already on, so keep it on. In the panel, press **Re-read Queue**, enter a **Job name** (the sequence name is added in front automatically; leave it empty to use the sequence name and date), choose **Whole sequence / Frames** and **Machines**, fill in **Split (optional)** if needed, confirm **Multi-machine stability** (it has a default), then press **Create Job**.
+Prepare the level, sequence, and MRQ settings. In the job's **True ODS Panoramic** settings, switch on **Rendering On Several Machines**; **Consistent Motion Timing** then appears, already on, so keep it on. In the panel, press **Re-read Queue**, enter a **Job name** (the sequence name is added in front automatically; leave it empty to use the sequence name and date), choose **Whole sequence / Frames** and **Machines**, fill in **Split (optional)** if needed, confirm **Multi-machine stability** (it has a default), then press **Create Job**. A multi-machine job writes one panorama per frame, so **Format > Projection** must be Equirectangular; with Cubemap Faces, **Create Job** refuses and says why. Render cube faces on one machine.
 
 [![TrueODS Distributed job creation: Re-read Queue, job name, frame range, machine count, multi-machine stability option and Create Job button](../media/guide/distributed-create-job.png)](../media/guide/distributed-create-job.png)
 
@@ -188,7 +188,7 @@ Progress is shown in the **Watch Console** window: completed frames, the estimat
 
 #### 5. Collect and review · Host
 
-Copy the other machines' output to the host as the panel directs, then press **Collect Frames**. It gathers every machine's frames into one place and lists missing frames, and it compares the frames rendered on both sides of each join; for EXR output it fades across each join, and the frames it replaces are kept in the `dissolve_originals` folder inside the collected folder. After reviewing the missing-frame and collection reports, still play across the joins yourself to check timing, simulations, fog, and lighting.
+Copy the other machines' output to the host as the panel directs, then press **Collect Frames**. It gathers every machine's frames into one place and lists missing frames, and it compares the frames rendered on both sides of each join; once every frame is there, it fades across each join for EXR output (with frames missing it does not: fill them in, then press **Collect Frames** again), and the frames it replaces are kept in the `dissolve_originals` folder inside the collected folder. After reviewing the missing-frame and collection reports, still play across the joins yourself to check timing, simulations, fog, and lighting.
 
 After changing the scene, sequence, or key settings, rebuild the corresponding job with **Recreate Job**, copy the project to every machine again as in step 2, and repeat the step 3 check on each. Preserve old output and use a separate directory for new results. Determine caches and warm-up through tests on the actual shot.
 
