@@ -50,9 +50,13 @@ TRUEODS 正在准备 Fab 首发。正式商品链接会在[产品主页](../READ
 
 开始多机任务前，应使用相同的工程内容、引擎与插件版本，最好使用同一级别的显卡（同一系列、相同显存），运行配置检查，并测试实际接点。预热量按场景实测确定。配置检查通过不等于所有模拟状态一致，也不替代接点画面检查。
 
-### “无缝体积雾”与分布式渲染版的时序锁定有什么不同？
+### “无缝体积渲染”与分布式渲染版的时序锁定有什么不同？
 
-**无缝体积雾是两版共有的画面能力**，关注一张全景图不同方向之间的体积雾衔接，让外景大气和内景光束在环视中连续。
+**无缝体积渲染是两版共有的画面能力**，关注一张全景图不同观看方向之间的体积效果衔接。
+
+支持的体积类型包括**高度雾与体积雾、网格体积材质、Local Fog Volume（局部雾体积）、Volumetric Cloud（体积云），以及 VDB / Heterogeneous Volumes（异质体积）**。
+
+也支持自定义雾效果，以及用于蒸汽、雨、浮尘和烟的粒子贴片。
 
 **分布式渲染版的时序锁定关注不同时间段之间的接续**，例如前半段和后半段分别由两台机器渲染。空间接缝与跨段时间接续是不同问题；体积效果仍应在自己的场景中检查。
 
@@ -81,6 +85,8 @@ EXR 与 PNG 外观不同，通常需要先检查读取软件的线性输入解�
 没有适用于全部场景的固定秒数或显存门槛。分辨率、采样、超采样、场景、特效、硬件与后台负载都会影响速度和资源需求。
 
 先按[快速上手](QUICKSTART.md)渲染单帧，再测试 8K 的普通帧与最重帧。**VRAM Mode** 可调整内存与耗时的取舍；它不保证整机内存或速度的固定比例。公布的测试数据需要结合其硬件、场景类别、设置和测量范围阅读；公布的渲染耗时均在 Unreal Engine 5.7 上、使用默认的 TSR 抗锯齿测得。
+
+已公布的性能数据使用插件 **Version 67（v12）** 实测。
 
 ### TrueODS 基础版 / 分布式渲染版与 Fab Personal / Professional 是一回事吗？
 
@@ -134,9 +140,13 @@ Not guaranteed. Temporal Lock addresses **engine-time continuity**. Unbaked simu
 
 Use matching project content, engine versions, and plugin versions on all machines, preferably with GPUs from the same family and with the same amount of video memory. Run the configuration check and test the actual joins. Determine warm-up from scene tests. A configuration check does not certify that every simulation state matches or replace visual inspection of joins.
 
-### How does seamless volumetric fog differ from Temporal Lock in TrueODS Distributed?
+### How does seamless volumetric rendering differ from Temporal Lock in TrueODS Distributed?
 
-**Seamless volumetric fog is shared by both editions.** It concerns fog continuity between viewing directions within a panorama, including outdoor atmosphere and indoor light shafts.
+**Seamless volumetric rendering is shared by both editions.** It concerns the continuity of volumetric effects between viewing directions within a panorama.
+
+Supported volume types include **height fog and volumetric fog, mesh-based volume materials, Local Fog Volumes, Volumetric Clouds, and VDB / Heterogeneous Volumes**.
+
+Custom fog effects and particle cards for steam, rain, airborne dust and smoke are also supported.
 
 **Temporal Lock in TrueODS Distributed concerns continuity between time segments**, such as the first and second halves of a shot rendered on separate machines. Spatial seams and time continuity are different problems. Test volumetric effects in your own scene.
 
@@ -165,6 +175,8 @@ This is a known limitation. UE 5.8 adds **Method** (Filmic / Standard ACES) unde
 There is no universal time per frame or VRAM threshold. Resolution, sampling, supersampling, scene, effects, hardware, and background load all affect cost.
 
 Follow the [Quick Start](QUICKSTART.md#english), then test ordinary and demanding 8K frames. **VRAM Mode** offers memory/time trade-offs, not fixed ratios for total memory or speed. Read benchmark figures together with their hardware, scene category, settings, and measurement scope. The published render times were measured on Unreal Engine 5.7 with the default TSR anti-aliasing.
+
+Published benchmark figures were measured with plugin **Version 67 (v12)**.
 
 ### Are the base TrueODS edition and TrueODS Distributed the same as Fab Personal / Professional?
 

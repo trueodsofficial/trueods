@@ -17,10 +17,16 @@ High-resolution **360° ODS and VR180 rendering for Unreal Engine**. Create ster
 | :--- | :--- |
 | **Correct stereo parallax with Lumen** | Achieving correct parallax in every direction can be difficult when rendering 360° stereo panoramas with Lumen in Unreal Engine. TRUEODS preserves stereo depth and scale wherever you look. Render 360° ODS or VR180, with top/bottom or side-by-side stereo layouts. |
 | **8K stereo in minutes** | A single GPU renders both eyes of an 8K 360° panorama in minutes, making high-resolution output practical for everyday production. |
-| **Seamless 360° volumetric fog** | Volumetric fog and light stay continuous across the full 360° panorama, indoors and outdoors: no stitching seams, and no brightness jumps, banding or other artifacts where view directions meet. |
+| **Seamless volumetric rendering** | Volumetric effects stay continuous across the full 360° panorama, indoors and outdoors, without stitching seams or brightness jumps where view directions meet. |
 | **Linear HDR masters** | 16-bit half-float EXR sequences for grading and compositing, alongside PNG, JPG or 16-bit TIFF review output. |
 
+Supported volume types include **height fog and volumetric fog, mesh-based volume materials, Local Fog Volumes, Volumetric Clouds, and VDB / Heterogeneous Volumes**.
+
+Custom fog effects and particle cards for steam, rain, airborne dust and smoke are also supported.
+
 **8K 360° stereo in these examples:** **8192 × 4096 per eye**, or **8192 × 8192** in a combined top/bottom frame. Render times depend on the scene, settings and GPU; use a short test render from your own project to estimate the time needed for the full sequence.
+
+<sub>The benchmark figures on this page were measured with plugin Version 67 (v12).</sub>
 
 ## Sample downloads
 
@@ -74,7 +80,7 @@ Detailed lighting, surface textures and nearby objects in a high-resolution inte
 **Heavy-scene reference:** a confidential project whose images cannot be shown; a heavier scene rendered on Unreal Engine 5.7, settings as above. Both machines rendered the same 6 consecutive frames with the same settings (average of the 5 intervals between them): **RTX 5090 ~234 s · RTX 4090 ~304 s** per 8K stereo frame.
 <!-- /TRUEODS-PERF -->
 
-### Seamless 360° volumetrics — interiors and exteriors
+### Seamless volumetric rendering — interior and exterior fog examples
 
 | Interior | Exterior |
 | :---: | :---: |

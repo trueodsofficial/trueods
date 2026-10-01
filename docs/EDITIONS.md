@@ -16,8 +16,12 @@ TRUEODS 正在准备 Fab 首发。本页介绍版本定位与工作流，正式�
 |---|---|---|
 | **正确立体视差** | 360° 环视时保留立体深度，面向 VR 观看 | MRQ > True ODS Panoramic > Stereo |
 | **快速 8K 双眼渲染** | 将高分辨率立体内容用于实际制作，缩短迭代等待；耗时依场景与硬件变化 | Resolution / Supersample / Samples Per Pane / VRAM Mode |
-| **无缝体积雾** | 外景大气和内景光束在全景各方向之间连续衔接 | 同一 True ODS Panoramic 渲染流程；雾与光照在场景内设置 |
+| **无缝体积渲染** | 体积效果在全景各观看方向之间连续衔接 | 同一 True ODS Panoramic 渲染流程；体积效果在场景内设置 |
 | **线性 HDR 母版** | 输出供后期调色与合成的 EXR，保留高动态范围 | Output > Also Write EXR (HDR master) / EXR Compression |
+
+两版均支持**高度雾与体积雾、网格体积材质、Local Fog Volume（局部雾体积）、Volumetric Cloud（体积云），以及 VDB / Heterogeneous Volumes（异质体积）**。
+
+也支持自定义雾效果，以及用于蒸汽、雨、浮尘和烟的粒子贴片。
 
 360 上下双眼的 8K 输出为 **8192 × 4096 每眼、8192 × 8192 整图**。各类材质与特效应先在自己的场景中做短测试。
 
@@ -112,8 +116,12 @@ TRUEODS is preparing for its Fab launch. This page explains edition positioning 
 |---|---|---|
 | **Correct stereo parallax** | Stereo depth while looking around a 360° panorama for VR | MRQ > True ODS Panoramic > Stereo |
 | **Fast 8K stereo rendering** | High-resolution stereo for production with shorter iteration waits; time depends on scene and hardware | Resolution / Supersample / Samples Per Pane / VRAM Mode |
-| **Seamless volumetric fog** | Continuous outdoor atmosphere and indoor light shafts between panorama directions | The same True ODS Panoramic workflow; configure fog and lighting in the scene |
+| **Seamless volumetric rendering** | Continuous volumetric effects between panorama viewing directions | The same True ODS Panoramic workflow; configure volumetric effects in the scene |
 | **Linear HDR masters** | EXR output retaining high dynamic range for grading and compositing | Output > Also Write EXR (HDR master) / EXR Compression |
+
+Both editions support **height fog and volumetric fog, mesh-based volume materials, Local Fog Volumes, Volumetric Clouds, and VDB / Heterogeneous Volumes**.
+
+Custom fog effects and particle cards for steam, rain, airborne dust and smoke are also supported.
 
 For 360 top/bottom stereo, 8K is **8192 × 4096 per eye and 8192 × 8192 combined**. Test materials and effects on a short sequence in your scene first.
 
