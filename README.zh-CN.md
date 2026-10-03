@@ -30,7 +30,7 @@
 
 ## 样片下载
 
-**图片和视频下载放在对应预览下方，早期原图也保留在本节。** 所有图片均为 **8192 × 8192、360° 上下双眼（Top/Bottom）**，**每眼 8192 × 4096**。可选 **16 位 PNG 原图**，或体积较小的**同尺寸 8 位 JPG（质量 100、4:4:4）**。JPG 保留原色彩配置；JPEG 格式本身仍为有损压缩。
+**图片和视频下载放在对应预览下方。** 所有图片均为 **8192 × 8192、360° 上下双眼（Top/Bottom）**，**每眼 8192 × 4096**。可选 **16 位 PNG 原图**，或体积较小的**同尺寸 8 位 JPG（质量 100、4:4:4）**。JPG 保留原色彩配置；JPEG 格式本身仍为有损压缩。
 
 <sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub>
 
@@ -43,8 +43,6 @@
 **[下载全部 5 张 JPG（ZIP · 154.13 MB）](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/TrueODS-8K-JPG-quality100.zip)**
 
 **补充外景原图（checkpoint01）：** [JPG · 36.2 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/checkpoint01_00108619.jpg) · [PNG 原图 · 215.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/checkpoint01_00108619.png)
-
-**早期检查站原图（CP01）：** [JPG · 27.2 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/CP01_00108668.jpg) · [PNG 原图 · 299.6 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/CP01_00108668.png)
 
 ## 看实际效果
 
@@ -90,7 +88,6 @@
 | :---: | :---: |
 | ![内景体积雾](media/showcase/interior-fog.webp)<br>[JPG · 25.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.jpg) · [PNG 原图 · 293.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.png)<br><sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub> | ![外景体积雾](media/showcase/exterior-fog.webp)<br>[下载多机渲染样片（MP4 · 87.5 MB）](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/distributed_timelock_sample.mp4)<br><sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub> |
 | 室内体积雾与光照连续衔接，360° 环视无拼接缝。 | 室外浓雾覆盖整个全景，各视向交界无断层与亮度跳变。 |
-
 
 ## 按制作方式选择版本
 

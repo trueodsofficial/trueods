@@ -30,7 +30,7 @@ Custom fog effects and particle cards for steam, rain, airborne dust and smoke a
 
 ## Sample downloads
 
-**Find image and video downloads below the corresponding previews. Earlier stills are also listed here.** All images are **8192 × 8192, 360° Top/Bottom stereo** — **8192 × 4096 per eye**. Choose **16-bit PNG originals** or smaller, same-resolution **8-bit JPGs at quality 100 (4:4:4)**. JPGs retain the original colour profile; JPEG remains a lossy format.
+**Find image and video downloads below the corresponding previews.** All images are **8192 × 8192, 360° Top/Bottom stereo** — **8192 × 4096 per eye**. Choose **16-bit PNG originals** or smaller, same-resolution **8-bit JPGs at quality 100 (4:4:4)**. JPGs retain the original colour profile; JPEG remains a lossy format.
 
 <sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub>
 
@@ -43,8 +43,6 @@ Use a 360° player that supports 8K HEVC and manually select **360° equirectang
 **[Download all five JPGs (ZIP · 154.13 MB)](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/TrueODS-8K-JPG-quality100.zip)**
 
 **Additional exterior original (checkpoint01):** [JPG · 36.2 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/checkpoint01_00108619.jpg) · [PNG original · 215.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/checkpoint01_00108619.png)
-
-**Earlier checkpoint still (CP01):** [JPG · 27.2 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/CP01_00108668.jpg) · [PNG original · 299.6 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/CP01_00108668.png)
 
 ## See the result
 
@@ -90,7 +88,6 @@ Detailed lighting, surface textures and nearby objects in a high-resolution inte
 | :---: | :---: |
 | ![Interior volumetric fog](media/showcase/interior-fog.webp)<br>[JPG · 25.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.jpg) · [PNG original · 293.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.png)<br><sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub> | ![Exterior volumetric fog](media/showcase/exterior-fog.webp)<br>[Download the multi-machine rendering sample (MP4 · 87.5 MB)](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/distributed_timelock_sample.mp4)<br><sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub> |
 | Continuous volumetric fog and lighting throughout the interior, with no seams across the full 360° view. | Dense outdoor fog across the full panorama, with no breaks or brightness jumps where view directions meet. |
-
 
 ## Choose your workflow
 
