@@ -84,10 +84,17 @@
 
 ### 无缝体积渲染：内景与外景体积雾示例
 
-| 内景 | 外景 |
-| :---: | :---: |
-| ![内景体积雾](media/showcase/interior-fog.webp)<br>[JPG · 25.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.jpg) · [PNG 原图 · 293.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.png)<br><sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub> | ![外景体积雾](media/showcase/exterior-fog.webp)<br>[下载多机渲染样片（MP4 · 87.5 MB）](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/distributed_timelock_sample.mp4)<br><sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub> |
-| 室内体积雾与光照连续衔接，360° 环视无拼接缝。 | 室外浓雾覆盖整个全景，各视向交界无断层与亮度跳变。 |
+<table width="100%">
+<tr><th width="50%" align="center">内景</th><th width="50%" align="center">外景</th></tr>
+<tr>
+<td width="50%" align="center" valign="top"><img width="480" alt="内景体积雾" src="media/showcase/interior-fog.webp" /><br><a href="https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.jpg">JPG · 25.5 MB</a> · <a href="https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.png">PNG 原图 · 293.5 MB</a><br><sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub></td>
+<td width="50%" align="center" valign="top"><img width="480" alt="外景体积雾" src="media/showcase/exterior-fog.webp" /><br><a href="https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/distributed_timelock_sample.mp4">下载多机渲染样片（MP4 · 87.5 MB）</a><br><sub>上下两极的重影来自 Pole Mono Merge（单眼融合），并非渲染瑕疵。</sub></td>
+</tr>
+<tr>
+<td width="50%" align="center" valign="top">室内体积雾与光照连续衔接，360° 环视无拼接缝。</td>
+<td width="50%" align="center" valign="top">室外浓雾覆盖整个全景，各视向交界无断层与亮度跳变。</td>
+</tr>
+</table>
 
 ## 按制作方式选择版本
 

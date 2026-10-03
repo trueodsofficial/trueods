@@ -84,10 +84,17 @@ Detailed lighting, surface textures and nearby objects in a high-resolution inte
 
 ### Seamless volumetric rendering — interior and exterior fog examples
 
-| Interior | Exterior |
-| :---: | :---: |
-| ![Interior volumetric fog](media/showcase/interior-fog.webp)<br>[JPG · 25.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.jpg) · [PNG original · 293.5 MB](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.png)<br><sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub> | ![Exterior volumetric fog](media/showcase/exterior-fog.webp)<br>[Download the multi-machine rendering sample (MP4 · 87.5 MB)](https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/distributed_timelock_sample.mp4)<br><sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub> |
-| Continuous volumetric fog and lighting throughout the interior, with no seams across the full 360° view. | Dense outdoor fog across the full panorama, with no breaks or brightness jumps where view directions meet. |
+<table width="100%">
+<tr><th width="50%" align="center">Interior</th><th width="50%" align="center">Exterior</th></tr>
+<tr>
+<td width="50%" align="center" valign="top"><img width="480" alt="Interior volumetric fog" src="media/showcase/interior-fog.webp" /><br><a href="https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.jpg">JPG · 25.5 MB</a> · <a href="https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/coffee02_00108360.png">PNG original · 293.5 MB</a><br><sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub></td>
+<td width="50%" align="center" valign="top"><img width="480" alt="Exterior volumetric fog" src="media/showcase/exterior-fog.webp" /><br><a href="https://github.com/trueodsofficial/trueods/releases/download/samples-20260928/distributed_timelock_sample.mp4">Download the multi-machine rendering sample (MP4 · 87.5 MB)</a><br><sub>Ghosting at the top and bottom poles comes from Pole Mono Merge, not a rendering artifact.</sub></td>
+</tr>
+<tr>
+<td width="50%" align="center" valign="top">Continuous volumetric fog and lighting throughout the interior, with no seams across the full 360° view.</td>
+<td width="50%" align="center" valign="top">Dense outdoor fog across the full panorama, with no breaks or brightness jumps where view directions meet.</td>
+</tr>
+</table>
 
 ## Choose your workflow
 
