@@ -7,7 +7,7 @@
 
 High-resolution **360° ODS and VR180 rendering for Unreal Engine**. Create stereo image sequences in Movie Render Queue, whether you work on a single workstation or coordinate rendering across multiple machines.
 
-[Sample downloads](#sample-downloads) · [Quick start](docs/QUICKSTART.md#english) · [Editions](docs/EDITIONS.md#english) · [FAQ](docs/FAQ.md#english) · [Support](docs/SUPPORT.md#english)
+[Sample downloads](#sample-downloads) · [Quick start](docs/QUICKSTART.md) · [Editions](docs/EDITIONS.md) · [FAQ](docs/FAQ.md) · [Support](docs/SUPPORT.md)
 
 > **Preparing for our Fab launch.** Purchase links will appear here when the listings are live. Supported: **Unreal Engine 5.7 and 5.8 · Windows 64-bit · Movie Render Queue**.
 
@@ -118,9 +118,9 @@ Starting at the correct frame is only part of joining a shot. Time-driven scene 
 
 The plugin checks each machine's configuration, allocates frame ranges, and checks output completeness during collection. Deploy the project to each machine, then use the panel on each machine to start or resume its assigned work. This workflow is designed for multiple machines you manage yourself, such as studio workstations and render nodes.
 
-[Compare editions and follow the TrueODS Distributed workflow →](docs/EDITIONS.md#english)
+[Compare editions and follow the TrueODS Distributed workflow →](docs/EDITIONS.md)
 
-Unbaked simulations, random or externally driven effects, and lighting or effects that need several frames to settle may still require caching, warm-up and checks at segment boundaries; see the [workflow notes](docs/EDITIONS.md#english). The base TrueODS edition and TrueODS Distributed are product editions; Fab's Personal and Professional price tiers are a separate distinction.
+Unbaked simulations, random or externally driven effects, and lighting or effects that need several frames to settle may still require caching, warm-up and checks at segment boundaries; see the [workflow notes](docs/EDITIONS.md). The base TrueODS edition and TrueODS Distributed are product editions; Fab's Personal and Professional price tiers are a separate distinction.
 
 ## Start rendering
 
@@ -128,18 +128,18 @@ Unbaked simulations, random or externally driven effects, and lighting or effect
 2. Add **True ODS Panoramic** to your Movie Render Queue job.
 3. Set the resolution, output folder, and frame range in the plugin panel, then start rendering.
 
-[Open the complete quick start →](docs/QUICKSTART.md#english)
+[Open the complete quick start →](docs/QUICKSTART.md)
 
 ## Documentation & support
 
 | Need | Go to |
 | :--- | :--- |
-| Installation and first render | [Quick start](docs/QUICKSTART.md#english) |
-| Edition comparison and multi-machine workflow | [Editions](docs/EDITIONS.md#english) |
-| Output sizes, HDR, compatibility and resuming | [FAQ](docs/FAQ.md#english) |
-| Technical help | [Support guide](docs/SUPPORT.md#english) · [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com) |
-| Support group | [Request to join the Telegram support group](docs/COMMUNITY.md#english) · Email proof of purchase to receive an invitation link |
-| Availability and updates | [Release status](docs/CHANGELOG.md#english) |
+| Installation and first render | [Quick start](docs/QUICKSTART.md) |
+| Edition comparison and multi-machine workflow | [Editions](docs/EDITIONS.md) |
+| Output sizes, HDR, compatibility and resuming | [FAQ](docs/FAQ.md) |
+| Technical help | [Support guide](docs/SUPPORT.md) · [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com) |
+| Support group | [Request to join the Telegram support group](docs/COMMUNITY.md) · Email proof of purchase to receive an invitation link |
+| Availability and updates | [Release status](docs/CHANGELOG.md) |
 
 This repository contains public product documentation and examples. Plugin packages are distributed separately. Demonstration scenes, characters and other third-party assets are not included with the plugin. Third-party software notices for the plugin (engine libraries such as OpenEXR and Imath, and code derived from ACES and the engine's tone curve) are in `THIRD_PARTY_NOTICES.txt` at the root of the plugin package.
 

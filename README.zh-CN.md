@@ -7,7 +7,7 @@
 
 为 Unreal Engine 制作高分辨率 **360° ODS 与 VR180 立体内容**。通过 Movie Render Queue 输出双眼图像序列，覆盖单机制作与多机协同渲染。
 
-[样片下载](#样片下载) · [快速上手](docs/QUICKSTART.md) · [版本选择](docs/EDITIONS.md) · [常见问题](docs/FAQ.md) · [技术支持](docs/SUPPORT.md)
+[样片下载](#样片下载) · [快速上手](docs/QUICKSTART.zh-CN.md) · [版本选择](docs/EDITIONS.zh-CN.md) · [常见问题](docs/FAQ.zh-CN.md) · [技术支持](docs/SUPPORT.zh-CN.md)
 
 > **正在准备 Fab 上线**。商品公开后，这里会提供购买入口。支持 **Unreal Engine 5.7 与 5.8 · Windows 64 位 · Movie Render Queue**。
 
@@ -118,9 +118,9 @@
 
 插件校验各机器配置、分配帧段，并在收帧时检查输出完整性。你将工程部署到各台机器后，在各台机器的面板上启动或续渲各自的任务。适用于多台自行管理的机器，例如工作室工作站与渲染节点。
 
-[查看版本比较与分布式渲染版操作流程 →](docs/EDITIONS.md)
+[查看版本比较与分布式渲染版操作流程 →](docs/EDITIONS.zh-CN.md)
 
-未烘焙的模拟、随机或外部驱动的效果，以及需要多帧才能稳定的光照与效果，仍可能需要缓存、预热与接点检查，详见[工作流说明](docs/EDITIONS.md)。基础版 / 分布式渲染版是产品版本，与 Fab 的 Personal / Professional 价格档分开。
+未烘焙的模拟、随机或外部驱动的效果，以及需要多帧才能稳定的光照与效果，仍可能需要缓存、预热与接点检查，详见[工作流说明](docs/EDITIONS.zh-CN.md)。基础版 / 分布式渲染版是产品版本，与 Fab 的 Personal / Professional 价格档分开。
 
 ## 开始渲染
 
@@ -128,18 +128,18 @@
 2. 在 Movie Render Queue 任务中添加 **True ODS Panoramic**。
 3. 在插件面板中设置分辨率、输出目录和帧范围，然后启动渲染。
 
-[打开完整快速上手指南 →](docs/QUICKSTART.md)
+[打开完整快速上手指南 →](docs/QUICKSTART.zh-CN.md)
 
 ## 文档与支持
 
 | 需要什么 | 入口 |
 | :--- | :--- |
-| 安装与第一次出图 | [快速上手](docs/QUICKSTART.md) |
-| 版本选择与多机制作 | [版本选择](docs/EDITIONS.md) |
-| 输出尺寸、HDR、兼容性与续渲 | [常见问题](docs/FAQ.md) |
-| 技术帮助 | [支持说明](docs/SUPPORT.md) · [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com) |
-| 售后群 | [申请加入 Telegram 售后群](docs/COMMUNITY.md) · 邮件发送订单凭证，回复获取邀请链接 |
-| 上线状态与更新 | [发行状态](docs/CHANGELOG.md) |
+| 安装与第一次出图 | [快速上手](docs/QUICKSTART.zh-CN.md) |
+| 版本选择与多机制作 | [版本选择](docs/EDITIONS.zh-CN.md) |
+| 输出尺寸、HDR、兼容性与续渲 | [常见问题](docs/FAQ.zh-CN.md) |
+| 技术帮助 | [支持说明](docs/SUPPORT.zh-CN.md) · [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com) |
+| 售后群 | [申请加入 Telegram 售后群](docs/COMMUNITY.zh-CN.md) · 邮件发送订单凭证，回复获取邀请链接 |
+| 上线状态与更新 | [发行状态](docs/CHANGELOG.zh-CN.md) |
 
 此仓库用于公开产品说明与示例，插件包另行分发。演示中的场景、角色及其他第三方资产不包含在插件内。插件涉及的第三方软件声明（OpenEXR、Imath 等引擎库，以及源自 ACES 与引擎色调曲线的代码）见插件包根目录的 `THIRD_PARTY_NOTICES.txt`。
 

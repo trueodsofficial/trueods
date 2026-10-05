@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 私密技术支持 / Private technical support
+  - name: Private technical support
     url: https://github.com/trueodsofficial/trueods/blob/main/docs/SUPPORT.md
-    about: "日志、原图和工程材料请私下联系 trueodssupport@gmail.com。 / Send logs, original frames and project materials privately to trueodssupport@gmail.com."
+    about: "Send logs, original frames and project materials privately to trueodssupport@gmail.com."
+  - name: 私密技术支持
+    url: https://github.com/trueodsofficial/trueods/blob/main/docs/SUPPORT.zh-CN.md
+    about: "日志、原图和工程材料请私下联系 trueodssupport@gmail.com。"
