@@ -58,6 +58,8 @@ TRUEODS 正在准备 Fab 首发。本页介绍版本定位与工作流，正式�
 
 ### 分布式渲染版多机流程
 
+[观看多机渲染操作教程（中文）](https://youtu.be/dhQPH_ifIlo)
+
 先完成[快速上手](QUICKSTART.zh-CN.md)的单机检查，再打开 **TrueODS Distributed > Multi-Machine Rendering**。在主机上创建任务，由你保存工程并复制到其他参与渲染的机器，最后在主机上收帧；在每台参与渲染的机器上，由你执行配置检查，再启动或续渲该机分到的帧段。
 
 **入口在编辑器顶栏的 Help 右侧**。点击 **TrueODS Distributed**，再选 **Multi-Machine Rendering**，打开的面板标签页为 **TrueODS Multi-Machine**。此入口仅在分布式渲染版提供；基础版的顶层菜单名为 **TrueODS**，其中没有多机入口。

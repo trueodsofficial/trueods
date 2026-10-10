@@ -59,6 +59,8 @@ The panel checks each machine's configuration, allocates frame ranges, and check
 
 ### TrueODS Distributed multi-machine workflow
 
+[Watch the multi-machine rendering tutorial (English)](https://youtu.be/oX5Qz-8jCqE)
+
 Complete the single-machine [Quick Start](QUICKSTART.md), then open **TrueODS Distributed > Multi-Machine Rendering**. You create the job on the host, save the project and copy it to the other rendering machines yourself, and collect the frames on the host at the end. On every rendering machine, you run the configuration check, then start or resume rendering that machine's assigned frames.
 
 **Find TrueODS Distributed in the editor's top menu bar, to the right of Help.** Click it and choose **Multi-Machine Rendering** to open the **TrueODS Multi-Machine** panel tab. This entry is available in TrueODS Distributed only; in the base edition the top-level menu is named **TrueODS** and has no multi-machine entry.

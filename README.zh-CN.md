@@ -120,6 +120,8 @@
 
 [查看版本比较与分布式渲染版操作流程 →](docs/EDITIONS.zh-CN.md)
 
+[观看多机渲染操作教程（中文）→](https://youtu.be/dhQPH_ifIlo)
+
 未烘焙的模拟、随机或外部驱动的效果，以及需要多帧才能稳定的光照与效果，仍可能需要缓存、预热与接点检查，详见[工作流说明](docs/EDITIONS.zh-CN.md)。基础版 / 分布式渲染版是产品版本，与 Fab 的 Personal / Professional 价格档分开。
 
 ## 开始渲染

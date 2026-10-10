@@ -120,6 +120,8 @@ The plugin checks each machine's configuration, allocates frame ranges, and chec
 
 [Compare editions and follow the TrueODS Distributed workflow →](docs/EDITIONS.md)
 
+[Watch the multi-machine rendering tutorial (English) →](https://youtu.be/oX5Qz-8jCqE)
+
 Unbaked simulations, random or externally driven effects, and lighting or effects that need several frames to settle may still require caching, warm-up and checks at segment boundaries; see the [workflow notes](docs/EDITIONS.md). The base TrueODS edition and TrueODS Distributed are product editions; Fab's Personal and Professional price tiers are a separate distinction.
 
 ## Start rendering
