@@ -22,7 +22,7 @@ High-resolution **360° ODS and VR180 rendering for Unreal Engine**. Create ster
 
 Supported volume types include **height fog and volumetric fog, mesh-based volume materials, Local Fog Volumes, Volumetric Clouds, and VDB / Heterogeneous Volumes**.
 
-Custom fog effects and particle cards for steam, rain, airborne dust and smoke are also supported.
+Niagara sprites and ribbons render seamlessly with default settings, using either CPU or GPU simulation. No additional configuration is needed. Particle cards for steam, rain, airborne dust and smoke, as well as custom fog effects, are also supported.
 
 **8K 360° stereo in these examples:** **8192 × 4096 per eye**, or **8192 × 8192** in a combined top/bottom frame. Render times depend on the scene, settings and GPU; use a short test render from your own project to estimate the time needed for the full sequence.
 

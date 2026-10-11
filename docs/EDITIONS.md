@@ -20,7 +20,7 @@ TRUEODS is preparing for its Fab launch. This page explains edition positioning 
 
 Both editions support **height fog and volumetric fog, mesh-based volume materials, Local Fog Volumes, Volumetric Clouds, and VDB / Heterogeneous Volumes**.
 
-Custom fog effects and particle cards for steam, rain, airborne dust and smoke are also supported.
+Niagara sprites and ribbons render seamlessly with default settings, using either CPU or GPU simulation. No additional configuration is needed. Particle cards for steam, rain, airborne dust and smoke, as well as custom fog effects, are also supported.
 
 For 360 top/bottom stereo, 8K is **8192 × 4096 per eye and 8192 × 8192 combined**. Test materials and effects on a short sequence in your scene first.
 

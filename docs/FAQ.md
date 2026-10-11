@@ -55,9 +55,15 @@ Use matching project content, engine versions, and plugin versions on all machin
 
 Supported volume types include **height fog and volumetric fog, mesh-based volume materials, Local Fog Volumes, Volumetric Clouds, and VDB / Heterogeneous Volumes**.
 
-Custom fog effects and particle cards for steam, rain, airborne dust and smoke are also supported.
+Niagara sprites and ribbons render seamlessly with default settings, using either CPU or GPU simulation. No additional configuration is needed. Particle cards for steam, rain, airborne dust and smoke, as well as custom fog effects, are also supported.
 
 **Temporal Lock in TrueODS Distributed concerns continuity between time segments**, such as the first and second halves of a shot rendered on separate machines. Spatial seams and time continuity are different problems. Test volumetric effects in your own scene.
+
+### Do Niagara particles need any special settings?
+
+No. Niagara sprites and ribbons render without seams with their default settings, whether they use CPU or GPU simulation. You do not need to change their alignment (for example, to Velocity Aligned) or adjust any TrueODS settings for this.
+
+When a shot is split across machines or resumed, simulations can still differ between runs. A fixed random seed alone does not guarantee identical results. If particles must match at the joins, use a suitable baked simulation cache and check the resulting joins. See [Temporal Lock and simulation continuity](#does-temporal-lock-make-every-water-fire-or-particle-simulation-identical-at-a-join).
 
 ### How should I choose EXR, half, and compression?
 
