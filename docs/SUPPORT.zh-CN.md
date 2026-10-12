@@ -9,6 +9,8 @@
 
 售后群：[Telegram 入群方式](COMMUNITY.zh-CN.md)
 
+购买前咨询：[售前咨询与效果交流（Telegram）](https://t.me/+jWlt-pgGHtRlOGUx)。售前群与售后群分开；售后群仍需通过邮件核实购买后邀请加入。
+
 ### 如何获得帮助
 
 技术支持请发邮件到 [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com)，主题使用 **[TrueODS Support] 简短问题描述**。支持中文和英文反馈；私密材料请通过邮箱发送，不入群也可获得邮件支持。

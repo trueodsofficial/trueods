@@ -9,6 +9,8 @@
 
 私密与备用支持：[trueodssupport@gmail.com](mailto:trueodssupport@gmail.com)
 
+购买前可加入[售前咨询与效果交流（Telegram）](https://t.me/+jWlt-pgGHtRlOGUx)。这是独立的售前群；下方售后群仍需通过邮件核实购买后邀请加入。
+
 ### 加入售后群
 
 1. 将 Fab 订单凭证发送到 [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com)，邮件主题使用 **[TrueODS Telegram] 入群申请**。

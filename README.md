@@ -139,6 +139,7 @@ Unbaked simulations, random or externally driven effects, and lighting or effect
 | Installation and first render | [Quick start](docs/QUICKSTART.md) |
 | Edition comparison and multi-machine workflow | [Editions](docs/EDITIONS.md) |
 | Output sizes, HDR, compatibility and resuming | [FAQ](docs/FAQ.md) |
+| Questions before buying | [Pre-sales questions and demos (Telegram)](https://t.me/+jWlt-pgGHtRlOGUx) |
 | Technical help | [Support guide](docs/SUPPORT.md) · [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com) |
 | Support group | [Request to join the Telegram support group](docs/COMMUNITY.md) · Email proof of purchase to receive an invitation link |
 | Availability and updates | [Release status](docs/CHANGELOG.md) |

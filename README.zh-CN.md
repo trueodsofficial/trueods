@@ -139,6 +139,7 @@ Niagara 的 sprite 和拖尾（ribbon）使用默认设置即可无缝渲染，C
 | 安装与第一次出图 | [快速上手](docs/QUICKSTART.zh-CN.md) |
 | 版本选择与多机制作 | [版本选择](docs/EDITIONS.zh-CN.md) |
 | 输出尺寸、HDR、兼容性与续渲 | [常见问题](docs/FAQ.zh-CN.md) |
+| 购买前咨询 | [售前咨询与效果交流（Telegram）](https://t.me/+jWlt-pgGHtRlOGUx) |
 | 技术帮助 | [支持说明](docs/SUPPORT.zh-CN.md) · [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com) |
 | 售后群 | [申请加入 Telegram 售后群](docs/COMMUNITY.zh-CN.md) · 邮件发送订单凭证，回复获取邀请链接 |
 | 上线状态与更新 | [发行状态](docs/CHANGELOG.zh-CN.md) |

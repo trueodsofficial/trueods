@@ -10,6 +10,8 @@ Support group: Telegram · Invitation by email after purchase verification
 
 Private and alternative support: [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com)
 
+For questions before buying, join [Pre-sales questions and demos (Telegram)](https://t.me/+jWlt-pgGHtRlOGUx). This is a separate group; the customer support group below still requires purchase verification by email.
+
 ### Join the support group
 
 1. Email your Fab proof of purchase to [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com) with the subject **[TrueODS Telegram] Join request**.

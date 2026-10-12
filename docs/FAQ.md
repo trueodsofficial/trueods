@@ -9,6 +9,10 @@
 
 TRUEODS is preparing for its Fab launch. The [product home](../README.md) will link to the official listings. This repository contains product information, documentation, and support resources, not the plugin download package. No public release has been announced; see the [changelog](CHANGELOG.md).
 
+### Where can I ask questions before buying?
+
+Join [Pre-sales questions and demos (Telegram)](https://t.me/+jWlt-pgGHtRlOGUx) to discuss your needs and view examples. For customer support, see [Support](SUPPORT.md); the separate customer support group requires purchase verification by email.
+
 ### What does ODS mean?
 
 **ODS stands for Omnidirectional Stereo**: 360° stereoscopic panoramas with correct parallax. Use a compatible stereo player and VR headset with the matching layout. This supports looking around; freely changing the viewing position in 6DoF volumetric video is a different delivery format.

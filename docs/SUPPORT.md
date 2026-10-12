@@ -10,6 +10,8 @@ Support email: [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com)
 
 Support group: [How to join](COMMUNITY.md)
 
+Questions before buying: [Pre-sales questions and demos (Telegram)](https://t.me/+jWlt-pgGHtRlOGUx). This is separate from the customer support group, which requires purchase verification by email.
+
 ### Contact and scope
 
 For technical support, email [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com) with the subject **[TrueODS Support] Short description**. Chinese and English reports are welcome. Send private materials by email; group membership is not required for email support.
