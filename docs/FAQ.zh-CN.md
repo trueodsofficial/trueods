@@ -6,7 +6,7 @@
 
 ### 现在可以在哪里购买？
 
-TRUEODS 正在准备 Fab 首发。正式商品链接会在[产品主页](../README.zh-CN.md)公布；本仓库提供产品介绍、使用文档与支持信息，不是插件下载包。当前没有已宣布的正式发行版，见[更新记录](CHANGELOG.zh-CN.md)。
+两版均已在 Fab 上架：[TrueODS 基础版](https://www.fab.com/listings/ad60562e-7897-46f6-995b-6e75639972fb) — **Personal：US$399.99** · [TrueODS Distributed（分布式渲染版）](https://www.fab.com/listings/c6178ce6-987a-4b29-9f55-033ed30df4bf) — **Personal：US$1,499.99**。本仓库提供产品介绍、使用文档与支持信息；插件请通过 Fab 安装。发行更新见[更新记录](CHANGELOG.zh-CN.md)。
 
 ### 购买前可以在哪里咨询？
 
@@ -25,7 +25,7 @@ TRUEODS 正在准备 Fab 首发。正式商品链接会在[产品主页](../READ
 | 4096 | 4096 × 2048 | 4096 × 4096 |
 | 8192 | 8192 × 4096 | 8192 × 8192 |
 
-对于 **180（VR180）**，每眼图像为 `W × W`，上下排列为 `W × 2W`，左右排列为 `2W × W`。设置位置：**True ODS Panoramic** 设置中的 **Format**、**Stereo Layout** 与 **Resolution > Output Width Per Eye**。交付时请同时说明每眼尺寸和双眼整图尺寸。
+对于 **180（VR180 ODS）**，每眼图像为 `W × W`，上下排列为 `W × 2W`，左右排列为 `2W × W`。设置位置：**True ODS Panoramic** 设置中的 **Format**、**Stereo Layout** 与 **Resolution > Output Width Per Eye**。交付时请同时说明每眼尺寸和双眼整图尺寸。
 
 当 **Resolution Preset** 选的是固定预设（不是 **Custom (manual)**）时，把 **Format** 切到 **180** 会保持相同的每度像素数，宽度随之减半：默认的 **8192 / eye** 在 180 下为每眼 **4096 × 4096**。180 需要每眼 **8192 × 8192** 时，请选择 **16384 / eye**，或先切到 180，再在 **Output Width Per Eye** 中手动输入 **8192**；手动输入后，预设会显示为 **Custom (manual)**。
 
@@ -80,7 +80,7 @@ EXR 与 PNG 外观不同，通常需要先检查读取软件的线性输入解�
 
 支持 **Unreal Engine 5.7 与 5.8**，仅限 **Windows 64 位编辑器**，配合 **Movie Render Queue、DX12 / SM6、Deferred** 使用。Fab 为每个引擎版本提供单独的插件包，在启动器中选择你的引擎版本安装即可。
 
-360 与 180（VR180）等距柱状双眼输出、上下或左右布局是文档介绍的工作流。**True ODS Panoramic** 设置中还提供 **Path Tracing** 渲染器（**Rendering > Renderer**）、非立体输出（关闭 **Stereo**）和立方面输出（**Format > Projection: Cubemap Faces**）；这些选项尚未经过与 Deferred 双眼流程同等的验证，正式使用前请先做短范围测试。Depth / Normals / Masks 不在本页承诺的功能范围内。Linux、macOS、打包游戏也不是当前目标流程。
+360 与 180（VR180 ODS）等距柱状双眼输出、上下或左右布局是文档介绍的工作流。**True ODS Panoramic** 设置中还提供 **Path Tracing** 渲染器（**Rendering > Renderer**）、非立体输出（关闭 **Stereo**）和立方面输出（**Format > Projection: Cubemap Faces**）；这些选项尚未经过与 Deferred 双眼流程同等的验证，正式使用前请先做短范围测试。Depth / Normals / Masks 不在本页承诺的功能范围内。Linux、macOS、打包游戏也不是当前目标流程。
 
 使用第三方材质、毛发、水面、粒子或其他特殊效果时，先做短测试。真实视差、遮挡与视角相关反射本来就可能使左右眼不同；两眼完全相同不是立体正确的判断标准。
 

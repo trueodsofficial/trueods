@@ -5,17 +5,19 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-High-resolution **360° ODS and VR180 rendering for Unreal Engine**. Create stereo image sequences in Movie Render Queue, whether you work on a single workstation or coordinate rendering across multiple machines.
+High-resolution **360° ODS and VR180 ODS rendering for Unreal Engine**. Create stereo image sequences in Movie Render Queue, whether you work on a single workstation or coordinate rendering across multiple machines.
 
 [Sample downloads](#sample-downloads) · [Quick start](docs/QUICKSTART.md) · [Editions](docs/EDITIONS.md) · [FAQ](docs/FAQ.md) · [Support](docs/SUPPORT.md)
 
-> **Preparing for our Fab launch.** Purchase links will appear here when the listings are live. Supported: **Unreal Engine 5.7 and 5.8 · Windows 64-bit · Movie Render Queue**.
+> **Both editions are now available on Fab.** [TrueODS (base edition)](https://www.fab.com/listings/ad60562e-7897-46f6-995b-6e75639972fb) — **Personal: US$399.99** · [TrueODS Distributed](https://www.fab.com/listings/c6178ce6-987a-4b29-9f55-033ed30df4bf) — **Personal: US$1,499.99**.
+>
+> Supported: **Unreal Engine 5.7 and 5.8 · Windows 64-bit · Movie Render Queue**.
 
 ## Four capabilities. Both editions.
 
 | Capability | What it gives you |
 | :--- | :--- |
-| **Correct stereo parallax with Lumen** | Achieving correct parallax in every direction can be difficult when rendering 360° stereo panoramas with Lumen in Unreal Engine. TRUEODS preserves stereo depth and scale wherever you look. Render 360° ODS or VR180, with top/bottom or side-by-side stereo layouts. |
+| **Correct stereo parallax with Lumen** | Achieving correct parallax in every direction can be difficult when rendering 360° stereo panoramas with Lumen in Unreal Engine. TRUEODS preserves stereo depth and scale wherever you look. Render 360° ODS or VR180 ODS, with top/bottom or side-by-side stereo layouts. |
 | **8K stereo in minutes** | A single GPU renders both eyes of an 8K 360° panorama in minutes, making high-resolution output practical for everyday production. |
 | **Seamless volumetric rendering** | Volumetric effects stay continuous across the full 360° panorama, indoors and outdoors, without stitching seams or brightness jumps where view directions meet. |
 | **Linear HDR masters** | 16-bit half-float EXR sequences for grading and compositing, alongside PNG, JPG or 16-bit TIFF review output. |

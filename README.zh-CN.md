@@ -5,17 +5,19 @@
 
 [English](README.md) · **简体中文**
 
-为 Unreal Engine 制作高分辨率 **360° ODS 与 VR180 立体内容**。通过 Movie Render Queue 输出双眼图像序列，覆盖单机制作与多机协同渲染。
+为 Unreal Engine 制作高分辨率 **360° ODS 与 VR180 ODS 立体内容**。通过 Movie Render Queue 输出双眼图像序列，覆盖单机制作与多机协同渲染。
 
 [样片下载](#样片下载) · [快速上手](docs/QUICKSTART.zh-CN.md) · [版本选择](docs/EDITIONS.zh-CN.md) · [常见问题](docs/FAQ.zh-CN.md) · [技术支持](docs/SUPPORT.zh-CN.md)
 
-> **正在准备 Fab 上线**。商品公开后，这里会提供购买入口。支持 **Unreal Engine 5.7 与 5.8 · Windows 64 位 · Movie Render Queue**。
+> **两版均已在 Fab 上架。** [TrueODS 基础版](https://www.fab.com/listings/ad60562e-7897-46f6-995b-6e75639972fb) — **Personal：US$399.99** · [TrueODS Distributed（分布式渲染版）](https://www.fab.com/listings/c6178ce6-987a-4b29-9f55-033ed30df4bf) — **Personal：US$1,499.99**。
+>
+> 支持 **Unreal Engine 5.7 与 5.8 · Windows 64 位 · Movie Render Queue**。
 
 ## 四项渲染能力，两版共有
 
 | 能力 | 解决什么问题 |
 | :--- | :--- |
-| **Lumen 下的正确立体视差** | 以往在 UE 中用 Lumen 渲染 360° 立体全景，很难让每个方向的立体视差都正确。TRUEODS 解决了这一点：环顾四周时，物体的纵深与尺度都真实可信。支持 360° ODS、VR180 及上下、左右双眼排列。 |
+| **Lumen 下的正确立体视差** | 以往在 UE 中用 Lumen 渲染 360° 立体全景，很难让每个方向的立体视差都正确。TRUEODS 解决了这一点：环顾四周时，物体的纵深与尺度都真实可信。支持 360° ODS、VR180 ODS 及上下、左右双眼排列。 |
 | **分钟级 8K 双眼渲染** | 单张显卡即可在分钟级完成一帧 8K 双眼 360° 立体画面，让高分辨率输出进入日常制作流程。 |
 | **无缝体积渲染** | 室内外的体积效果在整个 360° 全景中连续呈现，没有拼接缝或方向交界处的明暗跳变。 |
 | **线性 HDR 母版** | 输出 16 位半浮点 EXR 序列，用于调色与合成，同时可生成 PNG、JPG 或 16 位 TIFF 审片图。 |

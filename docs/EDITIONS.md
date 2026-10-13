@@ -7,7 +7,7 @@
 
 **The base TrueODS edition suits independent production and shots completed on one machine. TrueODS Distributed suits teams rendering parts of the same shot in parallel across several machines.** Both share the core image capabilities; TrueODS Distributed adds **Engine-Level Temporal Lock** (scene-time continuity across segments) and **Multi-Machine Rendering** (task organisation across machines).
 
-TRUEODS is preparing for its Fab launch. This page explains edition positioning and workflow. The released listings and packages will define final features and compatibility.
+Both editions are available on Fab: [TrueODS (base edition)](https://www.fab.com/listings/ad60562e-7897-46f6-995b-6e75639972fb) — **Personal: US$399.99** · [TrueODS Distributed](https://www.fab.com/listings/c6178ce6-987a-4b29-9f55-033ed30df4bf) — **Personal: US$1,499.99**. These are the USD Personal-tier prices; see each listing for eligibility, other price tiers and local pricing. This page explains edition positioning and workflow; the product listings and delivered packages define the released features and compatibility.
 
 ### Four shared image capabilities
 

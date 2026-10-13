@@ -7,7 +7,7 @@
 
 ### Where can I buy TRUEODS?
 
-TRUEODS is preparing for its Fab launch. The [product home](../README.md) will link to the official listings. This repository contains product information, documentation, and support resources, not the plugin download package. No public release has been announced; see the [changelog](CHANGELOG.md).
+Both editions are available on Fab: [TrueODS (base edition)](https://www.fab.com/listings/ad60562e-7897-46f6-995b-6e75639972fb) — **Personal: US$399.99** · [TrueODS Distributed](https://www.fab.com/listings/c6178ce6-987a-4b29-9f55-033ed30df4bf) — **Personal: US$1,499.99**. This repository contains product information, documentation and support resources; install the plugin through Fab. See the [changelog](CHANGELOG.md) for release updates.
 
 ### Where can I ask questions before buying?
 
@@ -26,7 +26,7 @@ For **360 equirectangular top/bottom stereo**, each eye is `W × W/2`, and the c
 | 4096 | 4096 × 2048 | 4096 × 4096 |
 | 8192 | 8192 × 4096 | 8192 × 8192 |
 
-For **180 (VR180)**, each eye is `W × W`: the combined layout is `W × 2W` top/bottom or `2W × W` side by side. Set these with **Format**, **Stereo Layout**, and **Resolution > Output Width Per Eye** in the **True ODS Panoramic** settings. State both per-eye and combined dimensions when delivering files.
+For **180 (VR180 ODS)**, each eye is `W × W`: the combined layout is `W × 2W` top/bottom or `2W × W` side by side. Set these with **Format**, **Stereo Layout**, and **Resolution > Output Width Per Eye** in the **True ODS Panoramic** settings. State both per-eye and combined dimensions when delivering files.
 
 When **Resolution Preset** is set to a fixed preset (not **Custom (manual)**), switching **Format** to **180** keeps the same pixels per degree, so the width is halved: the default **8192 / eye** gives **4096 × 4096** per eye at 180. For **8192 × 8192** per eye at 180, choose **16384 / eye**, or switch to 180 first and then type **8192** in **Output Width Per Eye**; the preset then shows **Custom (manual)**.
 
@@ -81,7 +81,7 @@ If an EXR looks different from a PNG, first check the viewer's linear input inte
 
 Supported engines are **Unreal Engine 5.7 and 5.8**, on the **Windows 64-bit editor** only, with **Movie Render Queue, DX12 / SM6, and Deferred**. Fab provides a separate package for each engine version; pick your engine version in the launcher when you install.
 
-The documented workflow covers 360 and 180 (VR180) equirectangular stereo, top/bottom or side by side. The **True ODS Panoramic** settings also offer the **Path Tracing** renderer (**Rendering > Renderer**), mono output (**Stereo** turned off), and cube-face output (**Format > Projection: Cubemap Faces**). These have not been through the same validation as the Deferred stereo workflow; test them on a short range before production. Depth, normal, and mask passes are not promised here. Linux, macOS, and packaged games are not current workflow targets.
+The documented workflow covers 360 and 180 (VR180 ODS) equirectangular stereo, top/bottom or side by side. The **True ODS Panoramic** settings also offer the **Path Tracing** renderer (**Rendering > Renderer**), mono output (**Stereo** turned off), and cube-face output (**Format > Projection: Cubemap Faces**). These have not been through the same validation as the Deferred stereo workflow; test them on a short range before production. Depth, normal, and mask passes are not promised here. Linux, macOS, and packaged games are not current workflow targets.
 
 Test third-party materials, hair, water, particles, and other special effects on a short sequence first. Real parallax, occlusion, and view-dependent reflections can legitimately differ between eyes; identical images are not the test for correct stereo.
 
