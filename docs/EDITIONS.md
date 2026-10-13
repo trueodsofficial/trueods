@@ -37,6 +37,8 @@ For 360 top/bottom stereo, 8K is **8192 × 4096 per eye and 8192 × 8192 combine
 
 The base edition can resume and users can arrange frame ranges themselves. Those operations alone do not provide TrueODS Distributed's cross-machine time continuity and coordinated task workflow. For a single-machine resume, use the **Resume Render** button below the output folder in the **Output** section of **True ODS Panoramic** (it appears only when the output folder holds an unfinished render); see [Quick Start](QUICKSTART.md).
 
+[Watch the TrueODS base edition rendering tutorial (English)](https://youtu.be/ZRPQQ-HpOhc)
+
 ### TrueODS Distributed: Engine-Level Temporal Lock
 
 **The frame numbers line up. The scene's motion should, too.**

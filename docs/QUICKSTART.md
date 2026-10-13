@@ -5,6 +5,8 @@
 
 [Home](../README.md) · [Editions](EDITIONS.md) · [FAQ](FAQ.md) · [Support](SUPPORT.md)
 
+[Watch the TrueODS base edition rendering tutorial (English)](https://youtu.be/ZRPQQ-HpOhc)
+
 This page follows the order you actually work in. The main path is:
 
 **1. Install → 2. Add the MRQ settings → 3. Understand and set the parameters → 4. Render**
