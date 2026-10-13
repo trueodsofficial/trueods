@@ -9,7 +9,7 @@
 
 私密与备用支持：[trueodssupport@gmail.com](mailto:trueodssupport@gmail.com)
 
-购买前可加入[售前咨询与效果交流（Telegram）](https://t.me/+jWlt-pgGHtRlOGUx)。这是独立的售前群；下方售后群仍需通过邮件核实购买后邀请加入。
+购买前可加入[售前咨询与效果交流（Telegram）](https://t.me/+jWlt-pgGHtRlOGUx) 或 [WhatsApp 售前群](https://chat.whatsapp.com/KEIad2ctdbb1oQp1wuYheH?mode=gi_t)。这两个售前群独立于售后群；下方售后群仍需通过邮件核实购买后邀请加入。
 
 ### 加入售后群
 

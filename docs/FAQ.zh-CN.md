@@ -10,7 +10,7 @@
 
 ### 购买前可以在哪里咨询？
 
-加入[售前咨询与效果交流（Telegram）](https://t.me/+jWlt-pgGHtRlOGUx)，讨论需求、查看效果示例。购买后的技术问题请见[支持说明](SUPPORT.zh-CN.md)；独立的售后群仍需通过邮件核实购买后邀请加入。
+加入[售前咨询与效果交流（Telegram）](https://t.me/+jWlt-pgGHtRlOGUx) 或 [WhatsApp 售前群](https://chat.whatsapp.com/KEIad2ctdbb1oQp1wuYheH?mode=gi_t)，讨论需求、查看效果示例。购买后的技术问题请见[支持说明](SUPPORT.zh-CN.md)；独立的售后群仍需通过邮件核实购买后邀请加入。
 
 ### ODS 是什么？
 

@@ -11,7 +11,7 @@ Both editions are available on Fab: [TrueODS (base edition)](https://www.fab.com
 
 ### Where can I ask questions before buying?
 
-Join [Pre-sales questions and demos (Telegram)](https://t.me/+jWlt-pgGHtRlOGUx) to discuss your needs and view examples. For customer support, see [Support](SUPPORT.md); the separate customer support group requires purchase verification by email.
+Join [Pre-sales questions and demos (Telegram)](https://t.me/+jWlt-pgGHtRlOGUx) or [WhatsApp](https://chat.whatsapp.com/KEIad2ctdbb1oQp1wuYheH?mode=gi_t) to discuss your needs and view examples. For customer support, see [Support](SUPPORT.md); the separate customer support group requires purchase verification by email.
 
 ### What does ODS mean?
 

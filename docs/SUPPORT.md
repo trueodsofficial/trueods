@@ -10,7 +10,7 @@ Support email: [trueodssupport@gmail.com](mailto:trueodssupport@gmail.com)
 
 Support group: [How to join](COMMUNITY.md)
 
-Questions before buying: [Pre-sales questions and demos (Telegram)](https://t.me/+jWlt-pgGHtRlOGUx). This is separate from the customer support group, which requires purchase verification by email.
+Questions before buying: [Pre-sales questions and demos (Telegram)](https://t.me/+jWlt-pgGHtRlOGUx) or [WhatsApp](https://chat.whatsapp.com/KEIad2ctdbb1oQp1wuYheH?mode=gi_t). These pre-sales groups are separate from the customer support group, which requires purchase verification by email.
 
 ### Contact and scope
 

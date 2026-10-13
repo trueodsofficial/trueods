@@ -9,7 +9,7 @@
 
 售后群：[Telegram 入群方式](COMMUNITY.zh-CN.md)
 
-购买前咨询：[售前咨询与效果交流（Telegram）](https://t.me/+jWlt-pgGHtRlOGUx)。售前群与售后群分开；售后群仍需通过邮件核实购买后邀请加入。
+购买前咨询：[售前咨询与效果交流（Telegram）](https://t.me/+jWlt-pgGHtRlOGUx) 或 [WhatsApp 售前群](https://chat.whatsapp.com/KEIad2ctdbb1oQp1wuYheH?mode=gi_t)。售前群与售后群分开；售后群仍需通过邮件核实购买后邀请加入。
 
 ### 如何获得帮助
 
