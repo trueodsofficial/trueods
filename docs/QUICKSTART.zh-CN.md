@@ -4,7 +4,7 @@
 
 [产品主页](../README.zh-CN.md) · [版本选择](EDITIONS.zh-CN.md) · [常见问题](FAQ.zh-CN.md) · [技术支持](SUPPORT.zh-CN.md)
 
-[观看 TrueODS 基础版操作教程（中文）](https://youtu.be/5C6xctUxWvo)
+[观看 TrueODS 基础版操作教程（中文）](https://youtu.be/2gzMn0yGxwM)
 
 本页按实际操作顺序编写，主线是：
 

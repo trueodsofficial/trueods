@@ -122,7 +122,7 @@ The plugin checks each machine's configuration, allocates frame ranges, and chec
 
 [Compare editions and follow the TrueODS Distributed workflow →](docs/EDITIONS.md)
 
-[Watch the TrueODS base edition rendering tutorial (English) →](https://youtu.be/ZRPQQ-HpOhc)
+[Watch the TrueODS base edition rendering tutorial (English) →](https://youtu.be/SjReJf0U9AI)
 
 [Watch the multi-machine rendering tutorial (English) →](https://youtu.be/oX5Qz-8jCqE)
 

@@ -122,7 +122,7 @@ Niagara 的 sprite 和拖尾（ribbon）使用默认设置即可无缝渲染，C
 
 [查看版本比较与分布式渲染版操作流程 →](docs/EDITIONS.zh-CN.md)
 
-[观看 TrueODS 基础版操作教程（中文）→](https://youtu.be/5C6xctUxWvo)
+[观看 TrueODS 基础版操作教程（中文）→](https://youtu.be/2gzMn0yGxwM)
 
 [观看多机渲染操作教程（中文）→](https://youtu.be/dhQPH_ifIlo)
 

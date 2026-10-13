@@ -5,7 +5,7 @@
 
 [Home](../README.md) · [Editions](EDITIONS.md) · [FAQ](FAQ.md) · [Support](SUPPORT.md)
 
-[Watch the TrueODS base edition rendering tutorial (English)](https://youtu.be/ZRPQQ-HpOhc)
+[Watch the TrueODS base edition rendering tutorial (English)](https://youtu.be/SjReJf0U9AI)
 
 This page follows the order you actually work in. The main path is:
 
