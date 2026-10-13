@@ -36,7 +36,7 @@ Niagara 的 sprite 和拖尾（ribbon）使用默认设置即可无缝渲染，C
 
 基础版可以续渲，也可以由用户安排不同帧范围；这些操作本身不会提供分布式渲染版的跨机时序接续与任务协同。单机续渲使用该 MRQ 任务 **True ODS Panoramic** 设置 **Output** 区输出文件夹下方的 **Resume Render** 按钮（输出目录中有未完成的渲染时才出现），详见[快速上手](QUICKSTART.zh-CN.md)。
 
-[观看 TrueODS 基础版操作教程（中文）](https://youtu.be/2gzMn0yGxwM)
+[观看 TrueODS 基础版操作教程（中文）](https://www.bilibili.com/video/BV1MSpz6QEHJ/)
 
 ### 分布式渲染版：引擎级时序锁定
 
@@ -60,7 +60,7 @@ Niagara 的 sprite 和拖尾（ribbon）使用默认设置即可无缝渲染，C
 
 ### 分布式渲染版多机流程
 
-[观看多机渲染操作教程（中文）](https://youtu.be/dhQPH_ifIlo)
+[观看多机渲染操作教程（中文）](https://www.bilibili.com/video/BV1yjpz65Eqy/)
 
 先完成[快速上手](QUICKSTART.zh-CN.md)的单机检查，再打开 **TrueODS Distributed > Multi-Machine Rendering**。在主机上创建任务，由你保存工程并复制到其他参与渲染的机器，最后在主机上收帧；在每台参与渲染的机器上，由你执行配置检查，再启动或续渲该机分到的帧段。
 
